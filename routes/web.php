@@ -12,9 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('index');
+
+Route::get('/qa', function () {
+    return view('qa');
+})->name('qa');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/coins/index', 'CoinsController@index')->name('coins.index');
+Route::get('/news/index', 'NewsController@index')->name('news.index');
+
