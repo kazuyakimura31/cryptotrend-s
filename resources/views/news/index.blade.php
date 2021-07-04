@@ -4,7 +4,7 @@
 @section('keywords', 'CryptoTrend,仮想通貨,ニュース,暗号通貨,Cryptocoin,Googleニュース') -->
 
 @section('content')
-<!--グーグルニュース/news-component。コントローラーからlist_gnをjsonにしてvueに渡す-->
+<!--グーグルニュース/コントローラーからのlist_gnをjsonにしてvueに渡す-->
 <div class="p-desc__container">
 
   <h2 class="p-desc__title c-text">
@@ -15,12 +15,11 @@
   </p>
 </div>
 
-<div id="newsapp">
-  <news-component
-    :list_gn="{{ json_encode($list_gn) }}" >
-  </news-component>
-
+<div id="app">
+  <news-google
+    v-bind:list_gn="{{ json_encode($list_gn) }}"
+  >
+  </news-google>
 </div>
-
 
 @endsection
