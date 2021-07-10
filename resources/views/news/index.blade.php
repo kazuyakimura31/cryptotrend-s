@@ -16,10 +16,10 @@
 </div>
 
 <div id="app">
-  <news-google
+  <news-component
     v-bind:list_gn="{{ json_encode($list_gn) }}"
   >
-  </news-google>
+  </news-component>
 </div>
 
 @endsection
