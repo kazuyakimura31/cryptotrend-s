@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Abraham\TwitterOAuth\TwitterOAuth;
 use App\Updatetime;
 use App\Coin;
 
@@ -19,7 +21,6 @@ class CoinsController extends Controller
         $day = $coinsupdate[1]["updated_at"];
         $week = $coinsupdate[2]["updated_at"];
         $highlow = $coinsupdate[3]["updated_at"];
-
 
         return view('coins.index',
             [

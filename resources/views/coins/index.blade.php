@@ -21,6 +21,11 @@
                                 </div>
                             @endfor
 
+                            <div>{{ $hour }}</div>
+                            <div>{{ $day }}</div>
+                            <div>{{ $week }}</div>
+                            <div>{{ $highlow }}</div>
+
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
