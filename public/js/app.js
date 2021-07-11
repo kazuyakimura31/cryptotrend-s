@@ -1688,6 +1688,254 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CoinsComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CoinsComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: [//それぞれcoinのindexページから取得
+  'coin_ajax', //coinのデータを取得するためのajaxに使うURL。
+  'hour', //過去1時間のデータ。
+  'day', //過去1日のデータ
+  'week' //過去1習慣のデータ
+  ],
+  data: function data() {
+    return {
+      coins: [],
+      showCoins: [],
+      //コインのツイート数、取引額の見た目上のデータをここに詰め込む
+      exitCoins: [],
+      //コインのツイート数、取引額の実際のデータをここに詰め込む
+      link_before: 'https://twitter.com/search?q=',
+      //ツイッター上にリンクするためのURL情報前半
+      link_after: '&src=typed_query',
+      //同上
+      hour_show: false,
+      //trueになれば1時間ごとのツイート数を表示
+      day_show: false,
+      //trueになれば1日ごとのツイート数を表示
+      week_show: false,
+      //trueになれば1週間ごとのツイート数を表示
+      check_show: false //trueになればコインボタンの表示を行う。
+
+    };
+  },
+  //ページ表示の時点では1時間ごとの表示を行う。
+  mounted: function mounted() {
+    this.showHour();
+    var self = this;
+    var url = this.coin_ajax;
+    axios.get(url).then(function (response) {
+      self.coins = response.data;
+    });
+  },
+  computed: {
+    //時間ごとのツイート数を多い順に並び替える算出プロパティ。hour_showは。
+    sortCoinsByHour: function sortCoinsByHour() {
+      if (this.hour_show) {
+        var arr = this.coins;
+        return arr.slice().sort(function (a, b) {
+          return b.hour - a.hour;
+        });
+      }
+    },
+    //1日ごとのツイート数を多い順に並び替える。
+    sortCoinsByDay: function sortCoinsByDay() {
+      if (this.day_show) {
+        var arr = this.coins;
+        return arr.slice().sort(function (a, b) {
+          return b.day - a.day;
+        });
+      }
+    },
+    //1週間ごとのツイート数を多い順に並び替える。
+    sortCoinsByWeek: function sortCoinsByWeek() {
+      if (this.week_show) {
+        var arr = this.coins;
+        return arr.slice().sort(function (a, b) {
+          return b.week - a.week;
+        });
+      }
+    }
+  },
+  methods: {
+    //1時間ごとのコインのツイート数を出すメソッド
+    showHour: function showHour() {
+      this.hour_show = true;
+      console.log(this.hour_show);
+      this.showCoins = [];
+      this.exitCoins = [];
+      this.resetCheckbox();
+      this.day_show = false;
+      this.week_show = false;
+    },
+    //1日ごとのコインのツイート数を出すメソッド
+    showDay: function showDay() {
+      this.day_show = true;
+      console.log(this.day_show);
+      this.showCoins = [];
+      this.exitCoins = [];
+      this.resetCheckbox();
+      this.hour_show = false;
+      this.week_show = false;
+    },
+    //1週間ごとのコインのツイート数を出すメソッド
+    showWeek: function showWeek() {
+      this.week_show = true;
+      console.log(this.week_show);
+      this.showCoins = [];
+      this.exitCoins = [];
+      this.resetCheckbox();
+      this.hour_show = false;
+      this.day_show = false;
+    },
+    //exitCoinsは表示上のコインではなく、データ上登録されているcoinデータ。
+    pushCoin: function pushCoin(pcoin) {
+      //exitCoinにpcoin.nameがなければ追加する
+      if (this.exitCoins.indexOf(pcoin.name) == -1) {
+        this.showCoins.push(pcoin);
+        this.exitCoins.push(pcoin.name);
+        console.log(this.exitCoins);
+        this.hour_show = false;
+        this.day_show = false;
+        this.week_show = false;
+      } else {
+        console.log(this.exitCoins);
+        this.exitCoins = this.exitCoins.filter(function (n) {
+          return n !== pcoin.name;
+        });
+        this.showCoins = this.showCoins.filter(function (n) {
+          return n !== pcoin;
+        });
+        console.log(this.exitCoins);
+      }
+    },
+    //表示内容を初期化するメソッド。
+    resetCoin: function resetCoin() {
+      this.showCoins = [];
+      this.exitCoins = [];
+      this.hour_show = true;
+      this.day_show = false;
+      this.week_show = false;
+      this.resetCheckbox();
+    },
+    //チェックボックスのチェックをリセットするメソッド。
+    //期間集計を表示するときにも使うため「resetCoin」とは分けています。
+    resetCheckbox: function resetCheckbox() {
+      var checkboxs = document.getElementsByClassName("p-sidebtn__coin__input");
+
+      for (var i = 0; i < checkboxs.length; i++) {
+        checkboxs[i].checked = false;
+      }
+    },
+    //コインの表示をするためのボックスを出し入れするメソッド。
+    coinbuttonShow: function coinbuttonShow() {
+      console.log("スタート");
+      this.check_show = !this.check_show;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NewsComponent.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NewsComponent.vue?vue&type=script&lang=js& ***!
@@ -37391,6 +37639,299 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CoinsComponent.vue?vue&type=template&id=51c4e0c6&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CoinsComponent.vue?vue&type=template&id=51c4e0c6& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", [
+    _c("section", { staticClass: "l-side" }, [
+      _c("div", { staticClass: "p-sidebtn__container" }, [
+        _c("label", { class: { btn_active: _vm.hour_show } }, [
+          _c("input", {
+            staticClass: "p-sidebtn",
+            attrs: { type: "radio", name: "tweet" },
+            on: { click: _vm.showHour }
+          }),
+          _vm._v("過去1時間")
+        ]),
+        _vm._v(" "),
+        _c("label", { class: { btn_active: _vm.day_show } }, [
+          _c("input", {
+            staticClass: "p-sidebtn",
+            attrs: { type: "radio", name: "tweet" },
+            on: { click: _vm.showDay }
+          }),
+          _vm._v("過去1日")
+        ]),
+        _vm._v(" "),
+        _c("label", { class: { btn_active: _vm.week_show } }, [
+          _c("input", {
+            staticClass: "p-sidebtn",
+            attrs: { type: "radio", name: "tweet" },
+            on: { click: _vm.showWeek }
+          }),
+          _vm._v("過去1週間")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-sidebtn__coinshow" }, [
+        _c(
+          "button",
+          {
+            staticClass: "p-sidebtn__toshowcoin",
+            on: {
+              click: function($event) {
+                return _vm.coinbuttonShow()
+              }
+            }
+          },
+          [_vm._v("コイン毎の情報を調べる")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "p-sidebtn__highlight",
+            on: {
+              click: function($event) {
+                return _vm.resetCoin()
+              }
+            }
+          },
+          [_vm._v("リセット")]
+        )
+      ]),
+      _vm._v(" "),
+      _vm.check_show
+        ? _c(
+            "div",
+            { staticClass: "p-sidebtn__coin__container" },
+            _vm._l(_vm.coins, function(pcoin) {
+              return _c(
+                "div",
+                { key: pcoin.id, staticClass: "p-sidebtn__coin" },
+                [
+                  _c("label", [
+                    _c("input", {
+                      staticClass: "p-sidebtn__coin__input",
+                      attrs: { type: "checkbox", name: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.pushCoin(pcoin)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "p-sidebtn__coin__checkparts" }, [
+                      _vm._v(_vm._s(pcoin.name))
+                    ])
+                  ])
+                ]
+              )
+            }),
+            0
+          )
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c(
+      "section",
+      { staticClass: "p-coinranking__container" },
+      [
+        _vm.hour_show
+          ? _c("div", { staticClass: "p-coinranking__table" }, [
+              _c("h3", [
+                _vm._v("過去1時間のツイート数 "),
+                _c("span", [_vm._v(" 更新日時：" + _vm._s(_vm.hour))])
+              ]),
+              _vm._v(" "),
+              _c(
+                "table",
+                [
+                  _c("th", [_vm._v("順位")]),
+                  _c("th", [_vm._v("コイン名")]),
+                  _c("th", [_vm._v("ツイート")]),
+                  _vm._v(" "),
+                  _vm._l(_vm.sortCoinsByHour, function(coin, i) {
+                    return _c("tr", { key: coin.id }, [
+                      _c("td", [_vm._v(_vm._s(i + 1))]),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href:
+                                "https://twitter.com/search?q=" +
+                                coin.name +
+                                "&src=typed_query",
+                              target: "_blank"
+                            }
+                          },
+                          [_vm._v(_vm._s(coin.name))]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(coin.hour))])
+                    ])
+                  })
+                ],
+                2
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.day_show
+          ? _c("div", { staticClass: "p-coinranking__table" }, [
+              _c("h3", [
+                _vm._v("過去1日のツイート数 "),
+                _c("span", [_vm._v(" 更新日時：" + _vm._s(_vm.day))])
+              ]),
+              _vm._v(" "),
+              _c(
+                "table",
+                [
+                  _c("th", [_vm._v("順位")]),
+                  _c("th", [_vm._v("コイン名")]),
+                  _c("th", [_vm._v("ツイート")]),
+                  _vm._v(" "),
+                  _vm._l(_vm.sortCoinsByDay, function(coin, i) {
+                    return _c("tr", { key: coin.id }, [
+                      _c("td", [_vm._v(_vm._s(i + 1))]),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href:
+                                "https://twitter.com/search?q=" +
+                                coin.name +
+                                "&src=typed_query",
+                              target: "_blank"
+                            }
+                          },
+                          [_vm._v(_vm._s(coin.name))]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(coin.day))])
+                    ])
+                  })
+                ],
+                2
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.week_show
+          ? _c("div", { staticClass: "p-coinranking__table" }, [
+              _c("h3", [
+                _vm._v("過去1週間のツイート数 "),
+                _c("span", [_vm._v(" 更新日時：" + _vm._s(_vm.week))])
+              ]),
+              _vm._v(" "),
+              _c(
+                "table",
+                [
+                  _c("th", [_vm._v("順位")]),
+                  _c("th", [_vm._v("コイン名")]),
+                  _c("th", [_vm._v("ツイート")]),
+                  _vm._v(" "),
+                  _vm._l(_vm.sortCoinsByWeek, function(coin, i) {
+                    return _c("tr", { key: coin.id }, [
+                      _c("td", [_vm._v(_vm._s(i + 1))]),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href:
+                                "https://twitter.com/search?q=" +
+                                coin.name +
+                                "&src=typed_query",
+                              target: "_blank"
+                            }
+                          },
+                          [_vm._v(_vm._s(coin.name))]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(coin.week))])
+                    ])
+                  })
+                ],
+                2
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm._l(_vm.showCoins, function(pcoin) {
+          return _c("div", { staticClass: "p-coinranking__table" }, [
+            _c("h3", [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href:
+                      "https://twitter.com/search?q=" +
+                      pcoin.name +
+                      "&src=typed_query",
+                    target: "_blank"
+                  }
+                },
+                [_vm._v(_vm._s(pcoin.name))]
+              )
+            ]),
+            _vm._v(" "),
+            _c("h4", [_vm._v("ツイート数集計")]),
+            _vm._v(" "),
+            _c("table", [
+              _c("th", [_vm._v("過去1時間")]),
+              _c("th", [_vm._v("過去1日")]),
+              _c("th", [_vm._v("過去1日")]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v(_vm._s(pcoin.hour))]),
+                _c("td", [_vm._v(_vm._s(pcoin.day))]),
+                _c("td", [_vm._v(_vm._s(pcoin.week))])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("h4", [_vm._v("過去24時間の取引価格")]),
+            _vm._v(" "),
+            _c("table", [
+              _c("th", [_vm._v("最高取引価格")]),
+              _c("th", [_vm._v("最安取引価格")]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v(_vm._s(pcoin.high))]),
+                _c("td", [_vm._v(_vm._s(pcoin.low))])
+              ])
+            ])
+          ])
+        })
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NewsComponent.vue?vue&type=template&id=6929860f&":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NewsComponent.vue?vue&type=template&id=6929860f& ***!
@@ -49688,14 +50229,20 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 Vue.component('news-component', __webpack_require__(/*! ./components/NewsComponent.vue */ "./resources/js/components/NewsComponent.vue")["default"]);
+Vue.component('coins-component', __webpack_require__(/*! ./components/CoinsComponent.vue */ "./resources/js/components/CoinsComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
-  el: '#app'
+document.addEventListener("DOMContentLoaded", function (e) {
+  var newsapp = new Vue({
+    el: '#newsapp'
+  });
+  var coinapp = new Vue({
+    el: '#coinsapp'
+  });
 });
 
 /***/ }),
@@ -49755,6 +50302,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/CoinsComponent.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/CoinsComponent.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CoinsComponent_vue_vue_type_template_id_51c4e0c6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CoinsComponent.vue?vue&type=template&id=51c4e0c6& */ "./resources/js/components/CoinsComponent.vue?vue&type=template&id=51c4e0c6&");
+/* harmony import */ var _CoinsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CoinsComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CoinsComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CoinsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CoinsComponent_vue_vue_type_template_id_51c4e0c6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CoinsComponent_vue_vue_type_template_id_51c4e0c6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CoinsComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CoinsComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/CoinsComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CoinsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CoinsComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CoinsComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CoinsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CoinsComponent.vue?vue&type=template&id=51c4e0c6&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/CoinsComponent.vue?vue&type=template&id=51c4e0c6& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CoinsComponent_vue_vue_type_template_id_51c4e0c6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CoinsComponent.vue?vue&type=template&id=51c4e0c6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CoinsComponent.vue?vue&type=template&id=51c4e0c6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CoinsComponent_vue_vue_type_template_id_51c4e0c6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CoinsComponent_vue_vue_type_template_id_51c4e0c6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

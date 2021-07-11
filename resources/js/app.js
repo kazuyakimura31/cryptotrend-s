@@ -22,6 +22,7 @@ window.Vue = require('vue');
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('news-component', require('./components/NewsComponent.vue').default);
+Vue.component('coins-component', require('./components/CoinsComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,6 +30,7 @@ Vue.component('news-component', require('./components/NewsComponent.vue').defaul
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app'
-});
+ document.addEventListener("DOMContentLoaded", function(e) {
+    const newsapp = new Vue({el: '#newsapp',})
+    const coinapp = new Vue({el: '#coinsapp',})
+  });

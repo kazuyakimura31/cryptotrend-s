@@ -15,7 +15,7 @@
   </p>
 </div>
 
-<div id="app">
+<div id="newsapp">
   <news-component
     v-bind:list_gn="{{ json_encode($list_gn) }}"
   >
