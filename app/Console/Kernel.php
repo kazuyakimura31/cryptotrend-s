@@ -13,7 +13,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        \App\Console\Commands\Coinshour::class,
+        \App\Console\Commands\Coinsday::class,
+        \App\Console\Commands\Coinsweek::class,
+        \App\Console\Commands\Coinshighlow::class,
     ];
 
     /**
@@ -24,8 +27,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('batch:coinshour')->hourly();//毎時、１時間のツイート数を更新
+        $schedule->command('batch:coinsday')->daily();//毎日、１日のツイート数を更新
+        $schedule->command('batch:coinsweek')->daily();//毎日、１週間のツイート数を更新
+        $schedule->command('batch:coinshighlow')->daily();//毎日、Coinの最高取引価格、最安取引価格を更新
     }
 
     /**
