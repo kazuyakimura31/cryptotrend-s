@@ -23,6 +23,9 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
+// ニュースコントローラー
+Route::get('/news/index', 'NewsController@index')->name('news.index');
+
 // コインコントローラー
 Route::get('/coins/index', 'CoinsController@index')->name('coins.index');//コイン情報indexページ
 Route::get('/coins/hour','CoinsController@hour')->name('coins.hour');//1時間のツイート数を検索。cron定期実行。
@@ -30,9 +33,13 @@ Route::get('/coins/day','CoinsController@day')->name('coins.day');//1日のツ�
 Route::get('/coins/week','CoinsController@week')->name('coins.week');//1週間のツイート数を検索。cron定期実行。
 Route::get('/coins/highlow','CoinsController@highlow')->name('coins.highlow');//最高取引価格と最安取引価格を検索。cron定期実行。
 
-// ニュースコントローラー
-Route::get('/news/index', 'NewsController@index')->name('news.index');
+// オートフォローコントローラー
+Route::get('/follows/index','FollowsController@index')->name('follows.index');
 
 //ajaxデータの表示
 Route::get('ajax/coin', 'AjaxController@coin')->name('ajax.coin');;
+
+
+
+
 
