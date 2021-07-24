@@ -46,6 +46,8 @@ class CoinsController extends Controller
         
         $twitter = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
 
+        // dd($twitter);
+
         $search_key ='"仮想通貨" OR "BTC" OR "ビットコイン" OR "ETH" OR "イーサリアム" OR
             "ETC" OR "イーサリアムクラシック" OR "LSK" OR "リスク" OR "FCT" OR "ファクトム" OR "XRP" OR "リップル" OR
             "XEM" OR "ネム" OR "LTC" OR "ライトコイン" OR "BCH" OR "ビットコインキャッシュ" OR "MONA" OR "モナコイン" OR

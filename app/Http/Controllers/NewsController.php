@@ -47,7 +47,7 @@ class NewsController extends Controller
             $list_gn = $list;
         }
 
-        return view('news.index', ['list_gn' => $list_gn]);
+        return view('news.index',compact('list_gn'));
         
     }
 }

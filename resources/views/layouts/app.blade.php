@@ -53,7 +53,8 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item"><a class="nav-link" href="{{ route('coins.index') }}">通貨トレンド</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('follows.index') }}">twitterフォロー</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('coins.index') }}">仮想通貨トレンド</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('news.index') }}">仮想通貨ニュース</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('qa') }}">Q&A</a></li>
 

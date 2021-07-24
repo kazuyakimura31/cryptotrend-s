@@ -35,6 +35,7 @@ Route::get('/coins/highlow','CoinsController@highlow')->name('coins.highlow');//
 
 // オートフォローコントローラー
 Route::get('/follows/index','FollowsController@index')->name('follows.index');
+Route::post('/follows/index','FollowsController@follow')->name('follows.follow');//フォロー
 
 //ajaxデータの表示
 Route::get('ajax/coin', 'AjaxController@coin')->name('ajax.coin');;

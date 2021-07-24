@@ -23,6 +23,7 @@ window.Vue = require('vue');
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('news-component', require('./components/NewsComponent.vue').default);
 Vue.component('coins-component', require('./components/CoinsComponent.vue').default);
+Vue.component('follows-component', require('./components/FollowsComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,4 +34,5 @@ Vue.component('coins-component', require('./components/CoinsComponent.vue').defa
  document.addEventListener("DOMContentLoaded", function(e) {
     const newsapp = new Vue({el: '#newsapp',})
     const coinapp = new Vue({el: '#coinsapp',})
+    const coinapp = new Vue({el: '#followsapp',})
   });
