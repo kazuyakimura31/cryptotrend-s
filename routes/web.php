@@ -33,12 +33,18 @@ Route::get('/coins/day','CoinsController@day')->name('coins.day');//1日のツ�
 Route::get('/coins/week','CoinsController@week')->name('coins.week');//1週間のツイート数を検索。cron定期実行。
 Route::get('/coins/highlow','CoinsController@highlow')->name('coins.highlow');//最高取引価格と最安取引価格を検索。cron定期実行。
 
-// オートフォローコントローラー
+// フォローコントローラー
 Route::get('/follows/index','FollowsController@index')->name('follows.index');
 Route::post('/follows/index','FollowsController@follow')->name('follows.follow');//フォロー
 
+// twitter認証
+Route::get('auth/twitter', 'Auth\TwitterController@redirectToProvider');// ログインURL
+Route::get('auth/twitter/callback', 'Auth\TwitterController@handleProviderCallback');// コールバックURL
+Route::get('auth/twitter/logout', 'Auth\TwitterController@logout');// ログアウトURL
+
 //ajaxデータの表示
 Route::get('ajax/coin', 'AjaxController@coin')->name('ajax.coin');;
+Route::get('ajax/users', 'AjaxController@users')->name('ajax.users');;
 
 
 

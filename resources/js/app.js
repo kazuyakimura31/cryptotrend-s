@@ -33,6 +33,6 @@ Vue.component('follows-component', require('./components/FollowsComponent.vue').
 
  document.addEventListener("DOMContentLoaded", function(e) {
     const newsapp = new Vue({el: '#newsapp',})
-    const coinapp = new Vue({el: '#coinsapp',})
-    const coinapp = new Vue({el: '#followsapp',})
+    const coinsapp = new Vue({el: '#coinsapp',})
+    const followsapp = new Vue({el: '#followsapp',})
   });

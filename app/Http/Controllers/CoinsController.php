@@ -37,10 +37,11 @@ class CoinsController extends Controller
     public static function hour()
     {
         // twitter認証
-        $consumerKey       = "z0Sk38n1Y7uwvoTqUUBetJZHd";
-        $consumerSecret    = "El5ccUzzyA0Eh8ZfDYfiVw73DGHtiM6W2fiayAIi395eTx9ILv";
-        $accessToken       = "1138383264320634881-OPgvL32hxWoFBENb4FGaGSiwOudVyw";
-        $accessTokenSecret = "XjvViQKQDPHqwtvFtuoMeolqmesGo9bRWlW3jWewIGJ46";
+        $config = config('services');
+        $consumerKey = $config['twitter']['client_id'];
+        $consumerSecret = $config['twitter']['client_secret'];
+        $accessToken = $config['twitter']['access_token'];
+        $accessTokenSecret = $config['twitter']['access_token_secret'];
         $now_time = date("Y-m-d_H:i:s")."_JST";//現在日時
         $before_time = date('Y-m-d_H:i:s', strtotime('-1 hour', time()))."_JST";//１時間前
         
@@ -220,10 +221,11 @@ class CoinsController extends Controller
     public static function day()
     {
         // twitter認証
-        $consumerKey       = "z0Sk38n1Y7uwvoTqUUBetJZHd";
-        $consumerSecret    = "El5ccUzzyA0Eh8ZfDYfiVw73DGHtiM6W2fiayAIi395eTx9ILv";
-        $accessToken       = "1138383264320634881-OPgvL32hxWoFBENb4FGaGSiwOudVyw";
-        $accessTokenSecret = "XjvViQKQDPHqwtvFtuoMeolqmesGo9bRWlW3jWewIGJ46";
+        $config = config('services');
+        $consumerKey = $config['twitter']['client_id'];
+        $consumerSecret = $config['twitter']['client_secret'];
+        $accessToken = $config['twitter']['access_token'];
+        $accessTokenSecret = $config['twitter']['access_token_secret'];
         $now_time = date("Y-m-d_H:i:s")."_JST";//現在日時
         $before_time = date('Y-m-d_H:i:s', strtotime('-1 day', time()))."_JST";//１日前
         
@@ -401,10 +403,11 @@ class CoinsController extends Controller
     public static function week()
     {
         // twitter認証
-        $consumerKey       = "z0Sk38n1Y7uwvoTqUUBetJZHd";
-        $consumerSecret    = "El5ccUzzyA0Eh8ZfDYfiVw73DGHtiM6W2fiayAIi395eTx9ILv";
-        $accessToken       = "1138383264320634881-OPgvL32hxWoFBENb4FGaGSiwOudVyw";
-        $accessTokenSecret = "XjvViQKQDPHqwtvFtuoMeolqmesGo9bRWlW3jWewIGJ46";
+        $config = config('services');
+        $consumerKey = $config['twitter']['client_id'];
+        $consumerSecret = $config['twitter']['client_secret'];
+        $accessToken = $config['twitter']['access_token'];
+        $accessTokenSecret = $config['twitter']['access_token_secret'];
         $now_time = date("Y-m-d_H:i:s")."_JST";//現在日時
         $before_time = date('Y-m-d_H:i:s', strtotime('-7 day', time()))."_JST";//１週間前
         
