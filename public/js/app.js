@@ -1996,7 +1996,7 @@ __webpack_require__.r(__webpack_exports__);
       ongoing: "",
       //自動フォローを実施している状態。trueであれば自動フォローON。
       users: this.users,
-      //users_resultsをusersに詰め込んでおく。
+      //usersをusersに詰め込んでおく。
       auto_status: this.follow_check
     };
   },
@@ -38168,7 +38168,7 @@ var render = function() {
               {
                 on: {
                   click: function($event) {
-                    return _vm.follow(user, index)
+                    return _vm.follows(user, index)
                   }
                 }
               },

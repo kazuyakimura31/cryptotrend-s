@@ -22,7 +22,7 @@
         <img :src="user.profile_image_url" alt="">
         <h4><a :href="'https://twitter.com/' + user.screen_name" target="_blank">{{ user.name }}</a></h4>
       </div>
-      <button v-on:click="follow(user,index)">@{{ user.screen_name }} をフォローする</button>
+      <button v-on:click="follows(user,index)">@{{ user.screen_name }} をフォローする</button>
       <p>{{ user.description}}</p>
       <p>《最新ツイート》<br>
       {{user.status.text}}</p><br>
@@ -49,7 +49,7 @@ export default{
         el: '#follows',
         reset_ok:true,
         ongoing:"", //自動フォローを実施している状態。trueであれば自動フォローON。
-        users:this.users, //users_resultsをusersに詰め込んでおく。
+        users:this.users, //usersをusersに詰め込んでおく。
         auto_status:this.follow_check
       }
     },

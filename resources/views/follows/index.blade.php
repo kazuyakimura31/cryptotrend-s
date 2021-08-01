@@ -10,7 +10,7 @@
     Twitter上の『仮想通貨』関連ユーザーをフォローして、情報を効率的に取得しましょう。
   </p>
 </div>
-<div class="u-mark__small">本機能の仕組みについては<a href="{{ url('about') }}/#about_twitter" target="_blank">[こちら]</a>を参照してください。</div>
+<div class="u-mark__small">本機能の仕組みについては<a href="{{ url('qa') }}/#about_twitter" target="_blank">[こちら]</a>を参照してください。</div>
 
 
 
@@ -31,19 +31,19 @@
     <section class="l-main__twitter">
     @if (session('user_token'))
     <!--ツイッター認証をしている場合は下記コンポーネントを表示。受け渡す変数の内容は以下の通りです。-->
-    <!--autofollow_checkはセッションの状態。1ならば自動フォロー実施中。-->
+    <!--follow_checkはセッションの状態。1ならば自動フォロー実施中。-->
     <!--users_resultsはログインユーザーがフォローしてないユーザー一覧のスクリーンネーム。-->
-    <!--autofollow_ajaxは個別フォローするurlへのポストの時のurl-->
-    <!--autofollowall_ajaxは自動フォローをonにするポストのurl-->
+    <!--follow_ajaxは個別フォローするurlへのポストの時のurl-->
+    <!--follow_all_ajaxは自動フォローをonにするポストのurl-->
 
-    <!--$autofollow_checkこの値で現在オートフォロー中か判断-->
+    <!--$follow_checkこの値で現在オートフォロー中か判断-->
     <div id="followsapp">
     <follows-component
         :users="{{ $users }}"
         follow_users="{{$follow_users}}"
         follow_check = "{{ $follow_check }}"
-        follow_ajax = "{{ url('follow') }}"
-        follow_all_ajax = "{{ url('follow/all') }}"
+        follow_ajax = "{{ url('follows') }}"
+        follow_all_ajax = "{{ url('follows/autoonfollow') }}"
     >
     </follows-component>
     </div>
