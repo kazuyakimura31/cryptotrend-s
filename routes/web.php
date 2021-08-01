@@ -36,6 +36,10 @@ Route::get('/coins/highlow','CoinsController@highlow')->name('coins.highlow');//
 // フォローコントローラー
 Route::get('/follows/index','FollowsController@index')->name('follows.index');
 Route::post('/follows/index','FollowsController@follow')->name('follows.follow');//フォロー
+Route::get('/follows/addfollow','FollowsController@addfollow')->name('follows.addfollow');//DBにツイッターアカウント追加。cron定期実行。
+
+Route::get('/follows/autofollow','FollowsController@autofollow')->name('follows.autofollow');//自動フォロー。15分に一度行う。
+// Route::post('/follows/autoonfollow','FollowsController@autoonfollow')->name('follows.autoonfollow');//自動フォローをON
 
 // twitter認証
 Route::get('auth/twitter', 'Auth\TwitterController@redirectToProvider');// ログインURL

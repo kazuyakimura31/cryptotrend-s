@@ -39,11 +39,11 @@
     <!--$autofollow_checkこの値で現在オートフォロー中か判断-->
     <div id="followsapp">
     <follows-component
-        :users_results="{{ $users_results }}"
+        :users="{{ $users }}"
         follow_users="{{$follow_users}}"
-        autofollow_check = "{{ $autofollow_check }}"
-        autofollow_ajax = "{{ url('autofollow') }}"
-        autofollowall_ajax = "{{ url('autofollow/all') }}"
+        follow_check = "{{ $follow_check }}"
+        follow_ajax = "{{ url('follow') }}"
+        follow_all_ajax = "{{ url('follow/all') }}"
     >
     </follows-component>
     </div>
@@ -53,7 +53,7 @@
     <!--ツイッター認証をしていない場合は下記を表示-->
     <div class="c-text p-twiiter__top">
     <p>各アカウントのフォローをするには<br>「Twitter認証」をしてください。</p>
-    <a href="auth/twitter" class=""><i class="fab fa-twitter"></i>Twitter認証を行う。</a>
+    <a href="/auth/twitter" class=""><i class="fab fa-twitter"></i>Twitter認証を行う。</a>
     </div>
 
     @endif

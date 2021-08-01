@@ -38,26 +38,26 @@
 <script>
 export default{
     props:[
-      'users_results', //利用中のユーザーがフォローしていないアカウントの情報。Twitter認証していればこの情報を出します。
+      'users', //利用中のユーザーがフォローしていないアカウントの情報。Twitter認証していればこの情報を出します。
       'follow_users', //ランダムにDBから取得したユーザー情報
-      'autofollow_ajax',//個別フォローするurlへのポストの時のurl
-      'autofollowall_ajax',//url情報。autofollow/allです。
-      'autofollow_check' //db上から取得したautofollowの状態。1ならばtrue、つまり自動フォロー中。
+      'follow_ajax',//個別フォローするurlへのポストの時のurl
+      'follow_all_ajax',//url情報。autofollow/allです。
+      'follow_check' //db上から取得したautofollowの状態。1ならばtrue、つまり自動フォロー中。
     ],
     data:function(){
       return{
         el: '#follows',
         reset_ok:true,
         ongoing:"", //自動フォローを実施している状態。trueであれば自動フォローON。
-        users:this.users_results, //users_resultsをusersに詰め込んでおく。
-        auto_status:this.autofollow_check
+        users:this.users, //users_resultsをusersに詰め込んでおく。
+        auto_status:this.follow_check
       }
     },
     mounted(){
       //mountedでページアクセス時に自動フォローを実施しているか判定。1なら自動フォロー中で、ongoingをtrue。
       //ongoingがtrueの場合、「自動フォロー実施中です」という表示が出る。
       //console.log(this.autofollow_check);
-      if(this.autofollow_check == 1){
+      if(this.follow_check == 1){
         this.ongoing = true;
       }else{
         this.ongoing = false;
@@ -75,7 +75,7 @@ export default{
         user_following: user.following
         }
         let self = this;
-        let url = this.autofollow_ajax;
+        let url = this.follow_ajax;
         axios.post(url, {
           data})
           .then((res)=>{
@@ -86,7 +86,7 @@ export default{
       //自動フォローを切り替えた際にボタンの表示、「自動フォロー実施中です」の表示非表示を切り替えるメソッド
       checkOngoing:function(){
         //console.log("checkOngoingを呼び出します");
-        if(this.autofollow_check == 1 || true){
+        if(this.follow_check == 1 || true){
           this.ongoing = true;
         }else{
           this.ongoing = false;
@@ -95,9 +95,9 @@ export default{
         //console.log(this.ongoing);
       },
       //まとめてフォロー（自動フォローのONOFFを切り替えるメソッド）
-      autofollowStart:function(){
+      followStart:function(){
         let self = this;
-        let url = this.autofollowall_ajax; //ajax先のurl
+        let url = this.follow_all_ajax; //ajax先のurl
         let auto_status = this.auto_status;
         //今現在のDB上のautofollowの状態が1の場合オートフォローの状態を0にする
         if(self.auto_status == 1){
