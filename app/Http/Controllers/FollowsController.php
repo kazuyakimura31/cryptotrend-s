@@ -99,12 +99,35 @@ class FollowsController extends Controller
 
 
     public function follow(Request $request){
+        Log::debug("--------フォローアクションです--------");
 
-        header("Access-Control-Allow-Origin: *");  //CROS
+        header("Access-Control-Allow-Origin: *"); 
         header("Access-Control-Allow-Headers: Origin, X-Requested-With");
         $twitteroauth = $this->twitteroauth();
-       
+        $user_id = $request->data{"user_id"};
+        $username = $request->data{"user_name"};
+
+        Log::debug("フォローする。".$username);
+        $oAuth->post("friendships/create", ["screen_name" => $username]);
+
+        $now_follow_num = Auth::user()->follow_count;
+        $sum = $now_follow_num + 1;
+        Auth::user()->follow_count = $sum;
+        Auth::user()->update();
+    
+        return response()->json(['result' => true]);
+        
     }
+
+    public function autoonfollow(Request $request){
+        Log::debug("--------自動フォローのON/OFFを切替えます。--------");
+
+        $user = Auth::user();
+        $user->autofollow = $request['request'];
+        $user->update();
+        return;
+      }
+
 
     //--------ユーザーをDB追加するメソッド。cron実施/日。既存ユーザー情報がある時はツイート更新。
     public static function addfollow(){
