@@ -19,6 +19,9 @@ class AddTwitterIdToUsers extends Migration
             $table->string('avatar')->nullable();
             $table->string('token')->nullable();
             $table->string('tokensecret')->nullable();
+            $table->string('autofollow')->nullable();
+            $table->date('follow_day')->nullable();
+            $table->string('follow_count')->nullable();
         });
     }
 
@@ -35,6 +38,9 @@ class AddTwitterIdToUsers extends Migration
             $table->dropColumn('avatar');
             $table->dropColumn('token');
             $table->dropColumn('tokensecret');
+            $table->string('autofollow');
+            $table->date('follow_day');
+            $table->string('follow_count');
         });
     }
 }

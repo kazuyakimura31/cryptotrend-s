@@ -19,7 +19,7 @@ class CreateFollowsTable extends Migration
             $table->string('twitter_id');
             $table->string('name');
             $table->string('text');
-            $table->string('registtime');
+            $table->string('registtime')->nullable();
             $table->timestamps();
         });
     }
