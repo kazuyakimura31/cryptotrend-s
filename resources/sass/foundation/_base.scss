@@ -1,0 +1,524 @@
+// ==============================
+// 変数
+// ==============================
+$font-color_default: #12575f;
+$font-color_date: #7be392;
+$color_corp: #17ca94;
+$font-color_sub1: #6cc7ac;
+
+$site-width: 980px;
+
+$font-size_s: 12px;
+$font-size_m: 14px;
+$font-size_default: 16px;
+$font-size_l: 18px;
+$font-size_xl: 24px;
+$font-size_xxl: 30px;
+$font-size_3l: 38px;
+
+$space_s: 5px;
+$space_m: 10px;
+$space_l: 15px;
+$space_xl: 20px;
+$space_xxl: 30px;
+$space_3l: 40px;
+
+$font-family_corp: 'Amatic SC', cursive;
+
+
+// メディアクエリのブレークポイント設定
+$breakpoints: (
+  'sm': 'screen and (max-width: 414px)',
+  'md': 'screen and (max-width: 768px)',
+  'lg': 'screen and (max-width: 1000px)',
+  'xl': 'screen and (max-width: 1200px)',
+) !default;
+
+@mixin mq($breakpoint: sm) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// ==================================
+// base
+// ==================================
+html, body {
+  width: 100%;
+  color: $font-color_default;
+  font-size: $font-size_default;
+  line-height: 1.6;
+  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; // TODO:リファクタ必要（変数にする）
+  text-size-adjust: 100%;
+  letter-spacing: 0.1em;
+}
+
+p, a {
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: $font-color_default;
+  text-decoration: none;
+  transition: .3s;
+}
+
+a:hover {
+  color: $color_corp;
+  transition: .3s;
+}
+
+img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.wrapper {
+  position: relative;
+  box-sizing: border-box;
+
+}
+
+// ==================================
+// header
+// ==================================
+.l-header {
+    box-sizing: border-box;
+    width: 100%;
+    height: 80px;
+    color: $font-color_default;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: $space_xl;
+    padding-right: $space_xl;
+    position: fixed;
+    // transition: .3s;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.9);
+    // &.float-active {
+    //   transition: .3s;
+    //   background: rgba(255, 255, 255, 0.9);
+    // }
+    @include mq() {
+      height: 60px;
+      padding-right: $space_l;
+      padding-left: $space_l;
+    }
+    .title {
+      font-size: $font-size_xxl;
+      font-weight: bold;
+    }
+  }
+  
+  // ==================================
+  // menu
+  // ==================================
+  @include mq() { // TODO:リファクタ必要（PCで修正が入る際も考えてincludeはクラスの中に書く）
+    .l-nav__menu {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: -100%;
+      background: rgba(255, 255, 255, .85);
+      width: 100%;
+      height: 100vh;
+      padding-top: 50px;
+      transition: .5s;
+      &.active {
+        transition: .5s;
+        transform: translateX(-100%);
+        z-index: 2;
+      }
+    }
+  }
+  
+  .l-menu {
+    display: flex;
+    align-items: center;
+    font-size: $font-size_default;
+    font-weight: bold;
+    &__item {
+      margin-right: $space_xl;
+    }
+    @include mq() {
+      display: block;
+      font-size: $font-size_xxl;
+      &__item {
+        margin-right: initial;
+      }
+      &__link {
+        -webkit-font-smoothing: initial;
+        display: block;
+        padding: $space_l;
+        text-align: center;
+      }
+    }
+  }
+  
+  // https://www.nxworld.net/tips/12-css-hamburger-menu-active-effect.html
+  .l-menu__trigger {
+    display: none;
+    @include mq() {
+      display: inline-block;
+    }
+    transition: all .4s;
+    box-sizing: border-box;
+    position: relative;
+    width: 40px;
+    height: 32px;
+    z-index: 3;
+    span {
+      display: inline-block;
+      transition: all .4s;
+      box-sizing: border-box;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: $font-color_default;
+      border-radius: 4px;
+      &:nth-of-type(1) {
+        top: 0;
+      }
+      &:nth-of-type(2) {
+        top: 14px;
+      }
+      &:nth-of-type(3) {
+        bottom: 0;
+      }
+    }
+    &.active span {
+      &:nth-of-type(1) {
+        transform: translateY(12px) rotate(-45deg);
+      }
+      &:nth-of-type(2) {
+        opacity: 0;
+      }
+      &:nth-of-type(3) {
+        transform: translateY(-15px) rotate(45deg);
+      }
+    }
+  }
+  
+  // ==================================
+// hero
+// ==================================
+.p-hero {
+    background-image: url('../images/hero.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__title {
+      position: absolute;
+      bottom: 33%;
+      right: 16%;
+      color: #fff;
+      width: 50%;
+      height: 30%;
+      text-align: right;
+      @include mq() {
+        width: 80%;
+      }
+    }
+    h2 {
+      font-size: 58px;
+      font-weight: bold;
+    }
+    p {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+
+// ==================================
+// container
+// ==================================
+.p-container {
+    width: $site-width;
+    @include mq() {
+      width: 100%;
+    }
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 80px;
+    padding-bottom: 120px;
+    &__fluid {
+      width: 100%;
+    }
+    &__title {
+      font-weight: bold;
+      text-align: center;
+      font-size: $font-size_3l;
+      margin-bottom: $space_3l;
+      @include mq() {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    &__subtitle {
+      font-weight: bold;
+      text-align: center;
+      font-size: $font-size_xl;
+      margin-bottom: $space_3l;
+      @include mq() {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    &__body {
+      @include mq() {
+        padding-left: $space_l;
+        padding-right: $space_l;
+      }
+    }
+    &__ornament {
+      .container-title {
+        span { // TODO: リファクタ必要（span以外を使うことも考えてclass名で指定すること）
+          display: inline-block;
+          background: #fff;
+          padding: 0 10px;
+          position: relative;
+          z-index: 1;
+        }
+        &:before, &:after {
+          border-top: 1px solid #2e1f1a;
+          content: "";
+          display: block;
+          position: relative;
+          z-index: 0;
+        }
+        &:before {
+          top: 28px;
+        }
+        &:after {
+          top: -28px;
+        }
+        &--lightGray {
+          span {
+            background: #f8f7fc;
+          }
+        }
+      }
+    }
+  }
+
+// ==================================
+// panel
+// ==================================
+.p-panel {
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+    transition: .5s;
+    &--hover {
+      display: inline-block;
+      transition: .5s;
+      &:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        transition: .5s;
+      }
+    }
+    &__border {
+      border-radius: 5px;
+      border: 5px solid $color_corp;
+    }
+    &__head, &__foot {
+      padding: $space_m;
+    }
+    &__head {
+      text-align: center;
+      color: $color_corp;
+    }
+    // &--active {
+    //   border: 5px solid $color_corp;
+    // }
+    &__group {
+      margin-right: -$space_l;
+      &--float {
+        overflow: hidden;
+      }
+      &--flex {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .p-panel {
+        float: left;
+        margin-right: $space_l;
+        margin-bottom: $space_l;
+        box-sizing: border-box;
+      }
+    }
+    &__cource {
+      width: calc(33.3% - #{$space_l});
+      @include mq() {
+        width: 100%;
+        margin: 0 auto $space_l auto;
+      }
+    }
+    &__login {
+      width: calc(33.3% - #{$space_l});
+      margin: 0 auto;
+      @include mq() {
+        width: 100%;
+        margin: 0 auto $space_l auto;
+      }
+    }
+  }
+  
+
+// ==================================
+// news
+// ==================================
+.p-news {
+    width: 70%;
+    height: 60px;
+    overflow-y: scroll;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: #f8f7fc; // TODO:リファクタ必要（複数使いまわしている箇所があるため、変数にまとめる）
+    padding: $space_l $space_xl;
+    &__item {
+      margin-bottom: $space_s;
+    }
+    &__date {
+      color: $font-color_date;
+      font-weight: bold;
+      margin-right: $space_m;
+    }
+    &__title {
+      font-size: $font-size_m;
+    }
+  }
+  
+
+
+// ==================================
+// form
+// ==================================
+.p-form {
+    width: 100%;
+    &__m {
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      @include mq() {
+        width: 100%;
+      }
+    }
+  }
+  
+  .p-input {
+    display: block;
+    margin-bottom: $space_m;
+    border: 3px solid #f6f5f4;
+    border-radius: 4px;
+    outline: none;
+    height: 60px;
+    font-size: $font-size_l;
+    color: $font-color_default;
+    box-sizing: border-box;
+    &__l {
+      padding: 5px 10px;
+      width: 100%;
+    }
+    &:focus {
+      border: 3px solid $color_corp;
+    }
+    &__textarea {
+      height: 200px;
+    }
+  }
+  
+  ::placeholder {
+    color: #ccc;
+  }
+  
+
+
+.p-header{
+  &__user{
+    @include mq() {
+      display: none;
+    }
+  }
+}
+
+
+
+// ==================================
+// btn
+// ==================================
+.c-btn {
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: .3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    &:hover {
+      transform: translateY(-3px);
+      transition: .3s;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    &__corp {
+      background: $color_corp; /* fallback for old browsers */
+    }
+    &__l {
+      padding: $space_l $space_xxl;
+      width: 100%;
+      font-size: $font-size_l;
+      text-align: center;
+    }
+  }
+
+
+  
+// ==================================
+// Utility
+// ==================================
+.u-bgColor--lightGray { // TODO:リファクタ必要（色が後から修正が入り、赤色になったら？）
+    background: #f8f7fc;
+    box-shadow: 0px 0px 8px 2px #ddd inset;
+  }
+
+  .u-mb--xl {
+    margin-bottom: $space_xl;
+  }
+  
+  .u-mb--xxl {
+    margin-bottom: $space_xxl;
+  }
+  
+  .u-ft__corp {
+    font-weight: bold;
+    // font-family: $font-family_corp;
+  }
+  
+  .u-ft__l {
+    font-size: $font-size_xxl;
+  }
+
+  .u-ft__btn{
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .u-mark{
+    &__sp{
+      display: none;
+      @include mq() {
+        display: block;
+      }
+    }
+  }
+  

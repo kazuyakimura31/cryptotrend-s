@@ -3,12 +3,49 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
+@import '_variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// Bootstrapは削除
+// @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+
+// FLOCSS設計
+// ==========================================================================
+// 1.Foundation- reset/normalize/base...
+// ==========================================================================
+@import 'foundation/_reset.scss';
+@import 'foundation/_base.scss';
+
+// ==========================================================================
+// 2.Layout- header/main/sidebar/footer...
+// ==========================================================================
+// @import 'layout/_billboard.scss';
+// @import 'layout/_header.scss';
+@import 'layout/_main.scss';
+// @import 'layout/_side.scss';
+@import 'layout/_footer.scss';
+
+// ==========================================================================
+// 3.Object
+// 　Component - grid/button/form/media...
+// ==========================================================================
+@import 'object/component/_flash.scss';
+// @import 'object/component/_card.scss';
+// @import 'object/component/_form.scss';
+// @import 'object/component/_text.scss';
+// @import 'object/component/_box.scss';
+
+// ==========================================================================
+// 3.Object
+// 　Project - articles/ranking/promo...
+// ==========================================================================
+// @import 'object/project/_autofollow.scss';
+// @import 'object/project/_about.scss';
+
+// ==========================================================================
+// 3.Object
+// 　Utility - clearfix/display/margin...
+// ==========================================================================
+// @import 'object/utility/_error.scss';
+// @import 'object/utility/_height.scss';
+// @import 'object/utility/_width.scss';

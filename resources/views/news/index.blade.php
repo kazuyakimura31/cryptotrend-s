@@ -1,7 +1,7 @@
 @extends('layouts.app')
-<!-- @section('title', '仮想通貨ニュース')
-@section('description', '仮想通貨ニュースは、仮想通貨関連のGoogleニュース情報をまとめて表示させる機能です。')
-@section('keywords', 'CryptoTrend,仮想通貨,ニュース,暗号通貨,Cryptocoin,Googleニュース') -->
+@section('title', '仮想通貨ニュース')
+@section('description', 'CryptoTrendは、Twitterを使ってツイート数を銘柄毎に集計し各銘柄の話題性を教えてくれるWEBサービスです。')
+@section('keywords', 'CryptoTrend,仮想通貨,仮想通貨トレンド,twitter,自動フォロー,仮想通貨ニュース')
 
 @section('content')
 <!--グーグルニュース/コントローラーからのlist_gnをjsonにしてvueに渡す-->

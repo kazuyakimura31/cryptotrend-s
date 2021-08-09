@@ -1,7 +1,7 @@
 @extends('layouts.app')
-<!-- @section('title', 'TOP')
-@section('description', 'CryptoTrendは、SNSサービスツイッターを利用し、仮想通貨に関する情報を集約し、情報のキャッチアップの手助けをするサービスです。')
-@section('keywords', 'CryptoTrend,Twitter,ツイッター,仮想通貨,TOP,自動フォロー,通貨トレンド,通貨ニュース,暗号通貨') -->
+@section('title', 'Q&A')
+@section('description', 'CryptoTrendは、Twitterを使ってツイート数を銘柄毎に集計し各銘柄の話題性を教えてくれるWEBサービスです。')
+@section('keywords', 'CryptoTrend,仮想通貨,仮想通貨トレンド,twitter,自動フォロー,仮想通貨ニュース')
 
 @section('content')
 <!--ビルボード-->

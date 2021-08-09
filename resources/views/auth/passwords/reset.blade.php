@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title', 'パスワード再発行')
+@section('description', 'CryptoTrendは、Twitterを使ってツイート数を銘柄毎に集計し各銘柄の話題性を教えてくれるWEBサービスです。')
+@section('keywords', 'CryptoTrend,仮想通貨,仮想通貨トレンド,twitter,自動フォロー,仮想通貨ニュース')
 
 @section('content')
 <div class="container">

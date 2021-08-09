@@ -1,6 +1,22 @@
 @extends('layouts.app')
+@section('title', '新規登録')
+@section('description', 'CryptoTrendは、Twitterを使ってツイート数を銘柄毎に集計し各銘柄の話題性を教えてくれるWEBサービスです。')
+@section('keywords', 'CryptoTrend,仮想通貨,仮想通貨トレンド,twitter,自動フォロー,仮想通貨ニュース')
 
 @section('content')
+<section class="p-container p-container__body" id="contact">
+    <h2 class="p-container__title"><span>新規登録</span></h2>
+    <div class="p-container__body">
+      <form action="" class="p-form p-form__m">
+        <input class="p-input p-input__l" type="text" placeholder="お名前">
+        <input class="p-input p-input__l" type="email" placeholder="email">
+        <textarea class="p-input p-input__l p-input__textarea u-mb--xxl" placeholder="お問い合わせ内容"></textarea>
+        <button class="c-btn c-btn__corp c-btn__l">送信</button>
+      </form>
+    </div>
+  </section>
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
