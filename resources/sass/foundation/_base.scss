@@ -76,7 +76,6 @@ img {
 .wrapper {
   position: relative;
   box-sizing: border-box;
-
 }
 
 // ==================================
@@ -263,6 +262,17 @@ img {
         margin-right: auto;
       }
     }
+    &__p{
+      font-weight: bold;
+      text-align: center;
+      font-size: $font-size_l;
+      margin-bottom: $space_l;
+      @include mq() {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
     &__subtitle {
       font-weight: bold;
       text-align: center;
@@ -434,8 +444,11 @@ img {
     &:focus {
       border: 3px solid $color_corp;
     }
-    &__textarea {
-      height: 200px;
+    // &__textarea {
+    //   height: 200px;
+    // }
+    input {
+      border: none;
     }
   }
   
@@ -476,6 +489,7 @@ img {
     &__l {
       padding: $space_l $space_xxl;
       width: 100%;
+      color: #fff;
       font-size: $font-size_l;
       text-align: center;
     }
