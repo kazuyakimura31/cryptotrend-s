@@ -1,49 +1,62 @@
 <template>
-<section>
+<section class="p-container__body">
+<div class="p-panel__group p-panel__group--flex"></div>
 
   <section class="l-side">
-
+  
     <!--過去のツイート数集計を表示させるラジオボタン。-->
     <!--それぞれのボタンをクリックすると、日、時間、週間のツイート数を表示させるメソッドが発火。-->
-    <div class="p-sidebtn__container">
-      <label v-bind:class='{btn_active:hour_show}'><input class="p-sidebtn" v-on:click="showHour" type="radio" name="tweet">過去1時間</label>
-      <label v-bind:class='{btn_active:day_show}'><input class="p-sidebtn" v-on:click="showDay" type="radio" name="tweet">過去1日</label>
-      <label v-bind:class='{btn_active:week_show}'><input class="p-sidebtn" v-on:click="showWeek" type="radio" name="tweet">過去1週間</label>
+    <div class="p-coinsbtn__container">
+      <div class="p-panel__cource">
+        <label v-bind:class='{btn_active:hour_show}'><input class="p-coinsbtn" v-on:click="showHour" type="radio" name="tweet">過去1時間</label>
+      </div>
+      <div class="p-panel__cource">
+        <label v-bind:class='{btn_active:day_show}'><input class="p-coinsbtn" v-on:click="showDay" type="radio" name="tweet">過去1日</label>
+      </div>
+      <div class="p-panel__cource">
+        <label v-bind:class='{btn_active:week_show}'><input class="p-coinsbtn" v-on:click="showWeek" type="radio" name="tweet">過去1週間</label>
+      </div>
     </div>
+    <div class="u-mb--l"></div>
 
     <!--コイン一覧のチェックボックスの表示非表示とリセットボタン。-->
     <!--スマホではコイン情報（行21~29）をデフォルトで表示すると、実際のデータの表示部分がかなり下になるため、表示非表示を切り替え可能にしました。-->
-    <div class="p-sidebtn__coinshow">
-      <button class="p-sidebtn__toshowcoin" v-on:click ="coinbuttonShow()">コイン毎の情報を調べる</button>
-      <button class="p-sidebtn__highlight" v-on:click="resetCoin()">リセット</button>
+    <div class="p-coinsbtn__coinshow">
+      <div class="p-panel__ctrend">
+        <button class="p-coinsbtn__toshowcoin" v-on:click ="coinbuttonShow()">各コイン情報をチェックする</button>
+      </div>
+      <div class="p-panel__ctrend">
+        <button class="p-coinsbtn__highlight" v-on:click="resetCoin()">コイン情報をリセットする</button>
+      </div>
     </div>
 
     <!--各種コインの情報を表示させるチェックボックス。check_showがtrueになれば表示される。-->
-    <div class="p-sidebtn__coin__container" v-if="check_show">
-      <div class="p-sidebtn__coin" v-for="pcoin in coins" v-bind:key="pcoin.id">
-        <label><input class="p-sidebtn__coin__input" v-on:click="pushCoin(pcoin)" type="checkbox" name="button">
-        <span class="p-sidebtn__coin__checkparts">{{pcoin.name}}</span>
+    <div class="p-coinsbtn__coin__container" v-if="check_show">
+      <p>仮想通貨名をクリックすると各コイン情報が表示されます</p>
+      <div class="p-coinsbtn__coin" v-for="pcoin in coins" v-bind:key="pcoin.id">
+        <label><input class="p-coinsbtn__coin__input" v-on:click="pushCoin(pcoin)" type="checkbox" name="button">
+        <span class="p-coinsbtn__coin__checkparts">{{pcoin.name}}</span>
         </label>
       </div>
     </div>
   </section>
 
-  <section class="p-coinranking__container">
-    <!--過去1時間のツイート数ランキングを表示-->
+  <section class="p-coinrank__container">
+    <!-- ツイート数ランキング / 過去1時間」-->
     <!--hour_showがtrueになると表示。sortCoinsByHourをv-forでループ表示。-->
-    <div class="p-coinranking__table" v-if="hour_show">
+    <div class="p-coinrank__table" v-if="hour_show">
       <h3>過去1時間のツイート数 <span> 更新日時：{{hour}}</span></h3>
       <table>
         <th>順位</th><th>コイン名</th><th>ツイート</th>
         <tr v-for="(coin,i) in sortCoinsByHour" v-bind:key="coin.id">
-        <td>{{ i + 1 }}</td><td><a :href="'https://twitter.com/search?q=' + coin.name + '&src=typed_query'" target="_blank">{{coin.name}}</a></td> <td>{{coin.hour}}</td>
+        <td>{{ i + 1 }}</td><td><a v-bind:href="'https://twitter.com/search?q=' + coin.name + '&src=typed_query'" target="_blank">{{coin.name}}</a></td> <td>{{coin.hour}}</td>
         </tr>
       </table>
     </div>
 
-    <!--過去1日のツイート数ランキングを表示-->
+    <!--ツイート数ランキング / 過去1日 -->
     <!--day_showがtrueになると表示。sortCoinsByDayをv-forでループ表示。-->
-    <div class="p-coinranking__table" v-if="day_show">
+    <div class="p-coinrank__table" v-if="day_show">
       <h3>過去1日のツイート数 <span> 更新日時：{{day}}</span></h3>
       <table>
         <th>順位</th><th>コイン名</th><th>ツイート</th>
@@ -53,9 +66,9 @@
       </table>
     </div>
 
-    <!--過去1週間のツイート数ランキングを表示-->
+    <!--ツイート数ランキング / 過去1週間 -->
     <!--week_showがtrueになると表示。sortCoinsByWeekをv-forでループ表示。-->
-    <div class="p-coinranking__table" v-if="week_show">
+    <div class="p-coinrank__table" v-if="week_show">
       <h3>過去1週間のツイート数 <span> 更新日時：{{week}}</span></h3>
       <table>
         <th>順位</th><th>コイン名</th><th>ツイート</th>
@@ -66,18 +79,16 @@
     </div>
 
     <!--各種コインごとの情報（showCoins）をv-forでループ表示。-->
-    <div v-for="pcoin in showCoins" class="p-coinranking__table">
+    <div v-for="pcoin in showCoins" class="p-coinrank__table">
       <h3><a :href="'https://twitter.com/search?q=' + pcoin.name + '&src=typed_query'" target="_blank">{{ pcoin.name }}</a></h3>
-      <h4>ツイート数集計</h4>
       <table>
-        <th>過去1時間</th><th>過去1日</th><th>過去1日</th>
+        <th>ツイート数（過去1時間）</th><th>ツイート数（過去1日）</th><th>ツイート数（過去1週間）</th>
         <tr>
         <td>{{pcoin.hour}}</td><td>{{pcoin.day}}</td><td >{{pcoin.week}}</td>
         </tr>
       </table>
-      <h4>過去24時間の取引価格</h4>
       <table>
-        <th>最高取引価格</th><th>最安取引価格</th>
+        <th>過去24時間の最高取引価格</th><th>過去24時間の最安取引価格</th>
         <tr>
         <td>{{pcoin.high}}</td><td>{{pcoin.low}}</td>
         </tr>
@@ -210,7 +221,7 @@
       //チェックボックスのチェックをリセットするメソッド。
       //期間集計を表示するときにも使うため「resetCoin」とは分けています。
       resetCheckbox(){
-        let checkboxs = document.getElementsByClassName( "p-sidebtn__coin__input" );
+        let checkboxs = document.getElementsByClassName( "p-coinsbtn__coin__input" );
         for (var i=0; i<checkboxs.length; i++){
            checkboxs[i].checked = false;
         }

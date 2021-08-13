@@ -1790,6 +1790,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [//それぞれcoinのindexページから取得
   'coin_ajax', //coinのデータを取得するためのajaxに使うURL。
@@ -1920,7 +1931,7 @@ __webpack_require__.r(__webpack_exports__);
     //チェックボックスのチェックをリセットするメソッド。
     //期間集計を表示するときにも使うため「resetCoin」とは分けています。
     resetCheckbox: function resetCheckbox() {
-      var checkboxs = document.getElementsByClassName("p-sidebtn__coin__input");
+      var checkboxs = document.getElementsByClassName("p-coinsbtn__coin__input");
 
       for (var i = 0; i < checkboxs.length; i++) {
         checkboxs[i].checked = false;
@@ -2099,6 +2110,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37808,103 +37824,125 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", [
+  return _c("section", { staticClass: "p-container__body" }, [
+    _c("div", { staticClass: "p-panel__group p-panel__group--flex" }),
+    _vm._v(" "),
     _c("section", { staticClass: "l-side" }, [
-      _c("div", { staticClass: "p-sidebtn__container" }, [
-        _c("label", { class: { btn_active: _vm.hour_show } }, [
-          _c("input", {
-            staticClass: "p-sidebtn",
-            attrs: { type: "radio", name: "tweet" },
-            on: { click: _vm.showHour }
-          }),
-          _vm._v("過去1時間")
+      _c("div", { staticClass: "p-coinsbtn__container" }, [
+        _c("div", { staticClass: "p-panel__cource" }, [
+          _c("label", { class: { btn_active: _vm.hour_show } }, [
+            _c("input", {
+              staticClass: "p-coinsbtn",
+              attrs: { type: "radio", name: "tweet" },
+              on: { click: _vm.showHour }
+            }),
+            _vm._v("過去1時間")
+          ])
         ]),
         _vm._v(" "),
-        _c("label", { class: { btn_active: _vm.day_show } }, [
-          _c("input", {
-            staticClass: "p-sidebtn",
-            attrs: { type: "radio", name: "tweet" },
-            on: { click: _vm.showDay }
-          }),
-          _vm._v("過去1日")
+        _c("div", { staticClass: "p-panel__cource" }, [
+          _c("label", { class: { btn_active: _vm.day_show } }, [
+            _c("input", {
+              staticClass: "p-coinsbtn",
+              attrs: { type: "radio", name: "tweet" },
+              on: { click: _vm.showDay }
+            }),
+            _vm._v("過去1日")
+          ])
         ]),
         _vm._v(" "),
-        _c("label", { class: { btn_active: _vm.week_show } }, [
-          _c("input", {
-            staticClass: "p-sidebtn",
-            attrs: { type: "radio", name: "tweet" },
-            on: { click: _vm.showWeek }
-          }),
-          _vm._v("過去1週間")
+        _c("div", { staticClass: "p-panel__cource" }, [
+          _c("label", { class: { btn_active: _vm.week_show } }, [
+            _c("input", {
+              staticClass: "p-coinsbtn",
+              attrs: { type: "radio", name: "tweet" },
+              on: { click: _vm.showWeek }
+            }),
+            _vm._v("過去1週間")
+          ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "p-sidebtn__coinshow" }, [
-        _c(
-          "button",
-          {
-            staticClass: "p-sidebtn__toshowcoin",
-            on: {
-              click: function($event) {
-                return _vm.coinbuttonShow()
+      _c("div", { staticClass: "u-mb--l" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-coinsbtn__coinshow" }, [
+        _c("div", { staticClass: "p-panel__ctrend" }, [
+          _c(
+            "button",
+            {
+              staticClass: "p-coinsbtn__toshowcoin",
+              on: {
+                click: function($event) {
+                  return _vm.coinbuttonShow()
+                }
               }
-            }
-          },
-          [_vm._v("コイン毎の情報を調べる")]
-        ),
+            },
+            [_vm._v("各コイン情報をチェックする")]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "p-sidebtn__highlight",
-            on: {
-              click: function($event) {
-                return _vm.resetCoin()
+        _c("div", { staticClass: "p-panel__ctrend" }, [
+          _c(
+            "button",
+            {
+              staticClass: "p-coinsbtn__highlight",
+              on: {
+                click: function($event) {
+                  return _vm.resetCoin()
+                }
               }
-            }
-          },
-          [_vm._v("リセット")]
-        )
+            },
+            [_vm._v("コイン情報をリセットする")]
+          )
+        ])
       ]),
       _vm._v(" "),
       _vm.check_show
         ? _c(
             "div",
-            { staticClass: "p-sidebtn__coin__container" },
-            _vm._l(_vm.coins, function(pcoin) {
-              return _c(
-                "div",
-                { key: pcoin.id, staticClass: "p-sidebtn__coin" },
-                [
-                  _c("label", [
-                    _c("input", {
-                      staticClass: "p-sidebtn__coin__input",
-                      attrs: { type: "checkbox", name: "button" },
-                      on: {
-                        click: function($event) {
-                          return _vm.pushCoin(pcoin)
+            { staticClass: "p-coinsbtn__coin__container" },
+            [
+              _c("p", [
+                _vm._v("仮想通貨名をクリックすると各コイン情報が表示されます")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.coins, function(pcoin) {
+                return _c(
+                  "div",
+                  { key: pcoin.id, staticClass: "p-coinsbtn__coin" },
+                  [
+                    _c("label", [
+                      _c("input", {
+                        staticClass: "p-coinsbtn__coin__input",
+                        attrs: { type: "checkbox", name: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.pushCoin(pcoin)
+                          }
                         }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "p-sidebtn__coin__checkparts" }, [
-                      _vm._v(_vm._s(pcoin.name))
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticClass: "p-coinsbtn__coin__checkparts" },
+                        [_vm._v(_vm._s(pcoin.name))]
+                      )
                     ])
-                  ])
-                ]
-              )
-            }),
-            0
+                  ]
+                )
+              })
+            ],
+            2
           )
         : _vm._e()
     ]),
     _vm._v(" "),
     _c(
       "section",
-      { staticClass: "p-coinranking__container" },
+      { staticClass: "p-coinrank__container" },
       [
         _vm.hour_show
-          ? _c("div", { staticClass: "p-coinranking__table" }, [
+          ? _c("div", { staticClass: "p-coinrank__table" }, [
               _c("h3", [
                 _vm._v("過去1時間のツイート数 "),
                 _c("span", [_vm._v(" 更新日時：" + _vm._s(_vm.hour))])
@@ -37946,7 +37984,7 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _vm.day_show
-          ? _c("div", { staticClass: "p-coinranking__table" }, [
+          ? _c("div", { staticClass: "p-coinrank__table" }, [
               _c("h3", [
                 _vm._v("過去1日のツイート数 "),
                 _c("span", [_vm._v(" 更新日時：" + _vm._s(_vm.day))])
@@ -37988,7 +38026,7 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _vm.week_show
-          ? _c("div", { staticClass: "p-coinranking__table" }, [
+          ? _c("div", { staticClass: "p-coinrank__table" }, [
               _c("h3", [
                 _vm._v("過去1週間のツイート数 "),
                 _c("span", [_vm._v(" 更新日時：" + _vm._s(_vm.week))])
@@ -38030,7 +38068,7 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _vm._l(_vm.showCoins, function(pcoin) {
-          return _c("div", { staticClass: "p-coinranking__table" }, [
+          return _c("div", { staticClass: "p-coinrank__table" }, [
             _c("h3", [
               _c(
                 "a",
@@ -38047,12 +38085,10 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("h4", [_vm._v("ツイート数集計")]),
-            _vm._v(" "),
             _c("table", [
-              _c("th", [_vm._v("過去1時間")]),
-              _c("th", [_vm._v("過去1日")]),
-              _c("th", [_vm._v("過去1日")]),
+              _c("th", [_vm._v("ツイート数（過去1時間）")]),
+              _c("th", [_vm._v("ツイート数（過去1日）")]),
+              _c("th", [_vm._v("ツイート数（過去1週間）")]),
               _vm._v(" "),
               _c("tr", [
                 _c("td", [_vm._v(_vm._s(pcoin.hour))]),
@@ -38061,11 +38097,9 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("h4", [_vm._v("過去24時間の取引価格")]),
-            _vm._v(" "),
             _c("table", [
-              _c("th", [_vm._v("最高取引価格")]),
-              _c("th", [_vm._v("最安取引価格")]),
+              _c("th", [_vm._v("過去24時間の最高取引価格")]),
+              _c("th", [_vm._v("過去24時間の最安取引価格")]),
               _vm._v(" "),
               _c("tr", [
                 _c("td", [_vm._v(_vm._s(pcoin.high))]),
@@ -38230,38 +38264,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "l-top__main" }, [
+  return _c("section", { staticClass: "p-container__body" }, [
     _c(
       "div",
-      { staticClass: "p-news__container" },
+      { staticClass: "p-panel__group p-panel__group--flex" },
       _vm._l(_vm.list_gn, function(list) {
-        return _c("div", { staticClass: "p-news__card" }, [
-          _c("h4", [
-            _c("a", { attrs: { href: list.url, target: "_blank" } }, [
-              _vm._v(_vm._s(list.title))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "p-news__card__right" }, [
-            _c(
-              "a",
-              {
-                staticClass: "p-news__jamp",
-                attrs: { href: list.url, target: "_blank" }
-              },
-              [_vm._v("続きを読む")]
-            ),
-            _c("br"),
+        return _c(
+          "div",
+          { staticClass: "p-panel p-panel__border p-panel__cnews" },
+          [
+            _c("div", { staticClass: "p-cnews__title" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "u-ft__corp",
+                  attrs: { href: list.url, target: "_blank" }
+                },
+                [_vm._v(_vm._s(list.title))]
+              )
+            ]),
             _vm._v(" "),
-            _c("span", [
-              _vm._v("投稿日時："),
-              _c("br"),
-              _vm._v("\n      " + _vm._s(list.pubDate) + "\n      ")
+            _c("div", { staticClass: "p-cnews__date" }, [
+              _c("span", [_vm._v("公開日時：" + _vm._s(list.pubDate))])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-cnews__p" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "p-cnews__jamp",
+                  attrs: { href: list.url, target: "_blank" }
+                },
+                [
+                  _c("i", { staticClass: "far fa-arrow-alt-circle-right" }),
+                  _vm._v("本文を読む")
+                ]
+              ),
+              _c("br")
             ])
-          ]),
-          _vm._v(" "),
-          _c("br")
-        ])
+          ]
+        )
       }),
       0
     )

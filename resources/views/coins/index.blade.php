@@ -4,14 +4,14 @@
 @section('keywords', 'CryptoTrend,仮想通貨,仮想通貨トレンド,twitter,自動フォロー,仮想通貨ニュース')
 
 @section('content')
-  <h2 class="">
-    通貨トレンド
-  </h2>
+<section class="p-container p-container__ornament" id="coins">
+  <h2 class="p-container__title"><span>仮想通貨トレンド</span></h2>
+  <p class="p-cnews__text u-mb--xl">
+    Twitterでの各仮想通貨の「ツイート数」と「取引価格」を提供しています。
+  </p>
 
-<!--コントローラーから持ってきたデータ。-->
-<!--coin_ajaxはcoinのデータを取得するためのajaxに使うURL。-->
-<!--hour,day,weekはそれぞれ期間分のツイート数を取得したもの。-->
-
+<!--coinデータを取得するためのajaxのURL。-->
+<!--それぞれ期間分（hour,day,week）のツイート数を取得。-->
 <div id="coinsapp">
   <coins-component
   coin_ajax="{{ url('ajax/coin') }}"
@@ -21,5 +21,7 @@
   >
 </coins-component>
 </div>
+
+</section>
 
 @endsection

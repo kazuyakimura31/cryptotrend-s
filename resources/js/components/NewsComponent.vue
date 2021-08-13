@@ -1,20 +1,25 @@
 <template>
-<!--各ニュースをfor文で出力する-->
-<section class="l-top__main">
-  <div class="p-news__container">
-    <div v-for="list in list_gn" class="p-news__card">
-      <h4><a v-bind:href="list.url" target="_blank">{{ list.title }}</a></h4>
-      <div class="p-news__card__right">
-      <a v-bind:href="list.url" class="p-news__jamp" target="_blank">続きを読む</a><br>
-      <span>投稿日時：<br>
-      {{ list.pubDate }}
-      </span>
+<!--各ニュースをfor文でまわす-->
+<section class="p-container__body">
+      <div class="p-panel__group p-panel__group--flex">
+        <div v-for="list in list_gn" class="p-panel p-panel__border p-panel__cnews">
+          <div class="p-cnews__title">
+            <a v-bind:href="list.url" target="_blank" class="u-ft__corp">{{ list.title }}</a>
+          </div>
+          <div class="p-cnews__date">
+            <span>公開日時：{{ list.pubDate }}</span>
+          </div>
+          <div class="p-cnews__p">
+            <a v-bind:href="list.url" class="p-cnews__jamp" target="_blank"><i class="far fa-arrow-alt-circle-right"></i>本文を読む</a><br>
+          </div>
+
+        </div>
       </div>
-      </br>
-    </div>
-  </div>
 </section>
+
 </template>
+
+
 
 
 <script>

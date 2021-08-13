@@ -4,16 +4,13 @@
 @section('keywords', 'CryptoTrend,仮想通貨,仮想通貨トレンド,twitter,自動フォロー,仮想通貨ニュース')
 
 @section('content')
-<!--グーグルニュース/コントローラーからのlist_gnをjsonにしてvueに渡す-->
-<div class="p-desc__container">
-
-  <h2 class="p-desc__title c-text">
-    <i class="far fa-newspaper"></i>仮想通貨ニュース一覧
-  </h2>
-  <p class="p-desc__text c-text">
-    Googleニュースより仮想通貨関連のニュースを抜粋しました。
+<!-- list_gnをjsonにしてvueに渡す -->
+<section class="p-container p-container__ornament" id="cnews">
+  <h2 class="p-container__title"><span>仮想通貨ニュース</span></h2>
+  <p class="p-cnews__text u-mb--xl">
+    Googleニュースから仮想通貨関連のニュースを提供しています。
   </p>
-</div>
+
 
 <div id="newsapp">
   <news-component
@@ -21,5 +18,7 @@
   >
   </news-component>
 </div>
+
+</section>
 
 @endsection
