@@ -1,0 +1,26 @@
+// ==================================
+// btn
+// ==================================
+.c-btn {
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: .3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    &:hover {
+      transform: translateY(-3px);
+      transition: .3s;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    &__corp {
+      background: $color_corp; /* fallback for old browsers */
+    }
+    &__l {
+      padding: $space_l $space_xxl;
+      width: 100%;
+      color: #fff;
+      font-size: $font-size_l;
+      text-align: center;
+    }
+  }

@@ -22,7 +22,6 @@
 // @import 'layout/_billboard.scss';
 @import 'layout/_header.scss';
 @import 'layout/_main.scss';
-// @import 'layout/_side.scss';
 @import 'layout/_footer.scss';
 
 // ==========================================================================
@@ -30,9 +29,9 @@
 // 　Component - grid/button/form/media...
 // ==========================================================================
 @import 'object/component/_flash.scss';
-// @import 'object/component/_card.scss';
+@import 'object/component/_card.scss';
 // @import 'object/component/_form.scss';
-// @import 'object/component/_text.scss';
+@import 'object/component/_btn.scss';
 // @import 'object/component/_box.scss';
 
 // ==========================================================================

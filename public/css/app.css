@@ -262,6 +262,85 @@ img {
   }
 }
 
+.c-card {
+  width: 40%;
+  min-height: 400px;
+  background-color: white;
+  margin: 10px 10px;
+  padding: 10px 10px;
+  text-align: center;
+}
+@media screen and (max-width: 414px) {
+  .c-card {
+    width: 90%;
+    padding: 5px 0;
+  }
+}
+.c-card a {
+  font-size: 100%;
+}
+.c-card p {
+  max-height: 40%;
+  height: auto;
+  margin: 20px auto;
+  font-size: 16px;
+  letter-spacing: 1px;
+  width: 90%;
+}
+@media screen and (max-width: 414px) {
+  .c-card p {
+    height: auto;
+  }
+}
+.c-card button {
+  margin-top: 10px;
+}
+.c-card__header {
+  font-size: 12px;
+}
+.c-card__header h4 {
+  width: 100%;
+  margin-right: 10%;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 16px;
+}
+@media screen and (max-width: 414px) {
+  .c-card__header h4 {
+    font-size: 12px;
+  }
+}
+.c-card__header img {
+  width: 60px;
+  height: 60px;
+  margin: 3%;
+}
+
+.c-btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.c-btn:hover {
+  transform: translateY(-3px);
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.c-btn__corp {
+  background: #17ca94;
+  /* fallback for old browsers */
+}
+.c-btn__l {
+  padding: 15px 30px;
+  width: 100%;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+
 .p-hero {
   background-image: url("../images/hero.jpg");
   background-attachment: fixed;
@@ -603,85 +682,6 @@ img {
   .p-header__user {
     display: none;
   }
-}
-
-.c-btn {
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  box-sizing: border-box;
-  transition: 0.3s;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.c-btn:hover {
-  transform: translateY(-3px);
-  transition: 0.3s;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-.c-btn__corp {
-  background: #17ca94;
-  /* fallback for old browsers */
-}
-.c-btn__l {
-  padding: 15px 30px;
-  width: 100%;
-  color: #fff;
-  font-size: 18px;
-  text-align: center;
-}
-
-.c-card {
-  width: 40%;
-  min-height: 400px;
-  background-color: white;
-  margin: 10px 10px;
-  padding: 10px 10px;
-  text-align: center;
-}
-@media screen and (max-width: 414px) {
-  .c-card {
-    width: 90%;
-    padding: 5px 0;
-  }
-}
-.c-card a {
-  font-size: 100%;
-}
-.c-card p {
-  max-height: 40%;
-  height: auto;
-  margin: 20px auto;
-  font-size: 16px;
-  letter-spacing: 1px;
-  width: 90%;
-}
-@media screen and (max-width: 414px) {
-  .c-card p {
-    height: auto;
-  }
-}
-.c-card button {
-  margin-top: 10px;
-}
-.c-card__header {
-  font-size: 12px;
-}
-.c-card__header h4 {
-  width: 100%;
-  margin-right: 10%;
-  letter-spacing: 2px;
-  font-weight: bold;
-  font-size: 16px;
-}
-@media screen and (max-width: 414px) {
-  .c-card__header h4 {
-    font-size: 12px;
-  }
-}
-.c-card__header img {
-  width: 60px;
-  height: 60px;
-  margin: 3%;
 }
 
 .p-coinsbtn {
