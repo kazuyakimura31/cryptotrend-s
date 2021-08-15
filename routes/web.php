@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('index');
 })->name('index');
@@ -19,9 +21,6 @@ Route::get('/qa', function () {
     return view('qa');
 })->name('qa');
 
-Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
 
 // ニュースコントローラー
 Route::get('/news/index', 'NewsController@index')->name('news.index');

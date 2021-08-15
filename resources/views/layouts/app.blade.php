@@ -39,7 +39,7 @@
 
         @guest
             <li class="l-menu__item"><a class="l-menu__link" href="{{ route('qa') }}">Q&A</a></li>
-            <li class="l-menu__item"><a class="l-menu__link" href="{{ route('login') }}">ログイア</a></li>
+            <li class="l-menu__item"><a class="l-menu__link" href="{{ route('login') }}">ログイン</a></li>
 
             @if (Route::has('register'))
                 <li class="l-menu__item"><a class="l-menu__link" href="{{ route('register') }}">新規登録</a></li>

@@ -1032,3 +1032,8 @@ img {
     display: block;
   }
 }
+
+.invalid-feedback {
+  color: #f00;
+  font-size: 14px;
+}

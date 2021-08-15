@@ -42,7 +42,7 @@
 
         <div class="p-form p-form__m">
             <label for="password-confirm">パスワード再入力</label>
-            <input id="password-confirm" type="password" class="p-input p-input__l form-control" name="password-confirmation" placeholder="パスワード再入力" required>
+            <input id="password-confirm" type="password" class="p-input p-input__l form-control" name="password_confirmation" placeholder="パスワード再入力" required>
         </div>
 
         <div class="p-form p-form__m">
