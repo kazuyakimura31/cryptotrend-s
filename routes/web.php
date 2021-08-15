@@ -41,9 +41,9 @@ Route::get('/follows/autofollow','FollowsController@autofollow')->name('follows.
 Route::post('/follows/autoonfollow','FollowsController@autoonfollow')->name('follows.autoonfollow');//自動フォローをON
 
 // twitter認証
-Route::get('auth/twitter', 'Auth\TwitterController@redirectToProvider');// ログインURL
-Route::get('auth/twitter/callback', 'Auth\TwitterController@handleProviderCallback');// コールバックURL
-Route::get('auth/twitter/logout', 'Auth\TwitterController@logout');// ログアウトURL
+Route::get('auth/twitter', 'Auth\TwitterController@redirectToProvider')->name('auth.twitter');// ログインURL
+Route::get('auth/twitter/callback', 'Auth\TwitterController@handleProviderCallback')->name('auth.twitter.callback');// コールバックURL
+Route::get('auth/twitter/logout', 'Auth\TwitterController@logout')->name('auth.twitter.logout');// ログアウトURL
 
 //ajaxデータの表示
 Route::get('ajax/coin', 'AjaxController@coin')->name('ajax.coin');

@@ -6,7 +6,7 @@
 @section('content')
 <!-- list_gnをjsonにしてvueに渡す -->
 <section class="p-container p-container__ornament" id="cnews">
-  <h2 class="p-container__title"><span>仮想通貨ニュース</span></h2>
+  <h2 class="p-container__title">仮想通貨ニュース</span></h2>
   <p class="p-cnews__text u-mb--xl">
     Googleニュースから仮想通貨関連のニュースを提供しています。
   </p>

@@ -1,0 +1,60 @@
+// ==================================
+// Utility
+// ==================================
+.u-bgColor--lightGray { // TODO:リファクタ必要（色が後から修正が入り、赤色になったら？）
+    background: #f8f7fc;
+    box-shadow: 0px 0px 8px 2px #ddd inset;
+}
+
+.u-mt--l {
+  margin-top: $space_l;
+}
+
+.u-mt--xl {
+  margin-top: $space_xl;
+}
+
+.u-mt--xxl {
+  margin-top: $space_xxl;
+}
+
+.u-mb--l {
+  margin-bottom: $space_l;
+}
+
+.u-mb--xl {
+  margin-bottom: $space_xl;
+}
+
+.u-mb--xxl {
+  margin-bottom: $space_xxl;
+}
+
+.u-ft__corp {
+  font-weight: bold;
+  // font-family: $font-family_corp;
+}
+
+.u-ft__l {
+  font-size: $font-size_xxl;
+}
+
+.u-ft__btn{
+  color: #fff;
+  font-weight: bold;
+}
+
+.u-header__follow{
+  font-size: $font-size_s;
+  margin-right: $space_xl;
+  color: #373737;
+}
+
+.u-mark{
+  &__sp{
+    display: none;
+    @include mq() {
+      display: block;
+    }
+  }
+}

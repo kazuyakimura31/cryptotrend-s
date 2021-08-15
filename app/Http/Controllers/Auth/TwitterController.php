@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
 use Auth;
 use Socialite;
 use Session;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class TwitterController extends Controller
 {
@@ -24,12 +24,12 @@ class TwitterController extends Controller
     public function handleProviderCallback(){
         try {
             $twitterUser = Socialite::driver('twitter')->user();
-            dd($twitterUser);
-            // $user_token = $twitterUser->token;
-            // $user_tokensecret = $twitterUser->tokenSecret;
+            // dd($twitterUser);
+            $user_token = $twitterUser->token;
+            $user_tokensecret = $twitterUser->tokenSecret;
             // //セッション情報としてツイッターユーザーの情報を保持。
-            // Session::put('user_token', $user_token);
-            // Session::put('user_tokensecret', $user_tokensecret);
+            Session::put('user_token', $user_token);
+            Session::put('user_tokensecret', $user_tokensecret);
 
         } catch (Exception $e) {
             return redirect('auth/twitter');
@@ -63,7 +63,7 @@ class TwitterController extends Controller
           'tokensecret' => $user_tokensecret
           ])->save();
           Auth::login($user_date, true);
-          return redirect()->route('follows');
+          return redirect()->route('follows/index');
   
           //ログインしてないなら、ツイッターアカウントのあるユーザーに登録しログインする
         }else{
@@ -99,6 +99,10 @@ class TwitterController extends Controller
         Auth::logout();
         Session::flush();
         return redirect()->route('index');
+    }
+
+    public function __construct(){
+      $this->middleware('guest')->except('logout');
     }
 
 }

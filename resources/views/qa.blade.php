@@ -19,8 +19,8 @@
           </span>
       </li>
       <li class="p-qa__item">
-          <span class="p-qa__title">
-            Q：「Twitterフォロー」の自動フォローでフォロー数が途中で止まりますが、制限がありますか？アカウントいですか？
+          <span class="p-qa__title" id="qa_limit">
+            Q：「Twitterフォロー」の自動フォローでフォロー数が途中で止まりますが、制限がありますか？
           </span>
           <span class="p-qa__p">
             A：Twitterのリクエスト制限があるため、フォロー数の上限は「15/15min」「1000/1day」となっております。最終的には全アカウントをフォローできますのでお時間を空けて確認ください。

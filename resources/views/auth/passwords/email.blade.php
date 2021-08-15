@@ -4,7 +4,7 @@
 @section('keywords', 'CryptoTrend,仮想通貨,仮想通貨トレンド,twitter,自動フォロー,仮想通貨ニュース')
 
 @section('content')
-<section class="p-container p-container__body" id="contact">
+<section class="p-container p-container__ornament" id="contact">
 <h2 class="p-container__title"><span>パスワードをリセットする</span></h2>
 <p class="p-container__p">入力したメールアドレスにリセット用URLを送信します</p>
 

@@ -1,0 +1,24 @@
+
+// ==================================
+// 新着ニュース
+// ==================================
+.p-news {
+    width: 80%;
+    height: 80px;
+    overflow-y: scroll;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: #f8f7fc; // TODO:リファクタ必要（複数使いまわしている箇所があるため、変数にまとめる）
+    padding: $space_l $space_xl;
+    &__item {
+      margin-bottom: $space_s;
+    }
+    &__date {
+      color: $font-color_date;
+      font-weight: bold;
+      margin-right: $space_m;
+    }
+    &__title {
+      font-size: $font-size_m;
+    }
+  }

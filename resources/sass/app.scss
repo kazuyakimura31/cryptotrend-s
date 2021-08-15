@@ -20,7 +20,7 @@
 // 2.Layout- header/main/sidebar/footer...
 // ==========================================================================
 // @import 'layout/_billboard.scss';
-// @import 'layout/_header.scss';
+@import 'layout/_header.scss';
 @import 'layout/_main.scss';
 // @import 'layout/_side.scss';
 @import 'layout/_footer.scss';
@@ -39,6 +39,7 @@
 // 3.Object
 // 　Project - articles/ranking/promo...
 // ==========================================================================
+@import 'object/project/_hero.scss';
 // @import 'object/project/_autofollow.scss';
 // @import 'object/project/_about.scss';
 
@@ -49,3 +50,4 @@
 // @import 'object/utility/_error.scss';
 // @import 'object/utility/_height.scss';
 // @import 'object/utility/_width.scss';
+@import 'object/utility/_utility.scss';

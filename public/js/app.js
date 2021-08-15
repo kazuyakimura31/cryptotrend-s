@@ -1993,6 +1993,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['users', //利用中のユーザーがフォローしていないアカウントの情報。Twitter認証していればこの情報を出します。
   'follow_users', //ランダムにDBから取得したユーザー情報
@@ -37827,7 +37828,7 @@ var render = function() {
   return _c("section", { staticClass: "p-container__body" }, [
     _c("div", { staticClass: "p-panel__group p-panel__group--flex" }),
     _vm._v(" "),
-    _c("section", { staticClass: "l-side" }, [
+    _c("section", [
       _c("div", { staticClass: "p-coinsbtn__container" }, [
         _c("div", { staticClass: "p-panel__cource" }, [
           _c("label", { class: { btn_active: _vm.hour_show } }, [
@@ -37877,7 +37878,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("各コイン情報をチェックする")]
+            [_vm._v("各コイン情報をチェック")]
           )
         ]),
         _vm._v(" "),
@@ -37892,7 +37893,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("コイン情報をリセットする")]
+            [_vm._v("コイン情報をリセット")]
           )
         ])
       ]),
@@ -38138,7 +38139,11 @@ var render = function() {
   return _c("section", [
     _c("div", { staticClass: "p-autofollow__container" }, [
       _c("div", { staticClass: "p-autofollow__description" }, [
-        _vm._m(0),
+        _c("p", [
+          _vm._v(
+            "「自動フォロー」ボタンをONにすると自動でフォローを実施します。"
+          )
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -38153,7 +38158,7 @@ var render = function() {
             ],
             staticClass: "p-autofollow__ongoing"
           },
-          [_c("h4", [_vm._v("自動フォロー実施中です。")])]
+          [_c("h4", [_vm._v("自動フォロー中です。")])]
         ),
         _vm._v(" "),
         _c(
@@ -38163,13 +38168,9 @@ var render = function() {
             class: { nowfollow: _vm.ongoing },
             on: { click: _vm.autofollowStart }
           },
-          [_vm._v("まとめてフォローON/OFF")]
+          [_vm._v("自動フォローON/OFF")]
         )
       ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "u-mark__small" }, [
-      _vm._v("※まとめてフォローONの状態でも、個別フォローが可能です。")
     ]),
     _vm._v(" "),
     _c(
@@ -38181,8 +38182,6 @@ var render = function() {
         _vm._l(_vm.users, function(user, index) {
           return _c("div", { key: index, staticClass: "c-card" }, [
             _c("div", { staticClass: "c-card__header" }, [
-              _c("img", { attrs: { src: user.profile_image_url, alt: "" } }),
-              _vm._v(" "),
               _c("h4", [
                 _c(
                   "a",
@@ -38194,7 +38193,16 @@ var render = function() {
                   },
                   [_vm._v(_vm._s(user.name))]
                 )
-              ])
+              ]),
+              _vm._v(" "),
+              _c("img", { attrs: { src: user.profile_image_url, alt: "" } }),
+              _vm._v(
+                "\n      フォロー数：" +
+                  _vm._s(user.friends_count) +
+                  " フォロワー数：" +
+                  _vm._s(user.followers_count) +
+                  "\n    "
+              )
             ]),
             _vm._v(" "),
             _c(
@@ -38212,17 +38220,10 @@ var render = function() {
             _c("p", [_vm._v(_vm._s(user.description))]),
             _vm._v(" "),
             _c("p", [
-              _vm._v("《最新ツイート》"),
+              _vm._v("＜最新のツイート＞"),
               _c("br"),
               _vm._v("\n    " + _vm._s(user.status.text))
             ]),
-            _c("br"),
-            _vm._v(
-              "\n    フォロー数：" +
-                _vm._s(user.friends_count) +
-                " フォロワー数：" +
-                _vm._s(user.followers_count)
-            ),
             _c("br")
           ])
         })
@@ -38231,18 +38232,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _vm._v("まとめてフォローをONにすると15分に一度、"),
-      _c("span", [_vm._v("自動フォロー")]),
-      _vm._v("を実施します。")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -50541,6 +50531,8 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./sp-menu */ "./resources/js/sp-menu.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -50838,6 +50830,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewsComponent_vue_vue_type_template_id_6929860f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/sp-menu.js":
+/*!*********************************!*\
+  !*** ./resources/js/sp-menu.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  // フロートヘッダーメニュー
+  var targetHeight = $('.js-float-menu-target').height();
+  $(window).on('scroll', function () {
+    $('.js-float-menu').toggleClass('float-active', $(this).scrollTop() > targetHeight);
+  }); // SPメニュー
+
+  $('.js-toggle-sp-menu').on('click', function () {
+    $(this).toggleClass('active');
+    $('.js-toggle-sp-menu-target').toggleClass('active');
+  });
+});
 
 /***/ }),
 

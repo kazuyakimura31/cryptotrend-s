@@ -5,7 +5,7 @@
 
 @section('content')
 <section class="p-container p-container__ornament" id="coins">
-  <h2 class="p-container__title"><span>仮想通貨トレンド</span></h2>
+  <h2 class="p-container__title"><span><i class="fab fa-bitcoin"></i>仮想通貨トレンド</span></h2>
   <p class="p-cnews__text u-mb--xl">
     Twitterでの各仮想通貨の「ツイート数」と「取引価格」を提供しています。
   </p>

@@ -1,8 +1,8 @@
 <template>
 <section class="p-container__body">
-<div class="p-panel__group p-panel__group--flex"></div>
+  <div class="p-panel__group p-panel__group--flex"></div>
 
-  <section class="l-side">
+  <section>
   
     <!--過去のツイート数集計を表示させるラジオボタン。-->
     <!--それぞれのボタンをクリックすると、日、時間、週間のツイート数を表示させるメソッドが発火。-->
@@ -23,10 +23,10 @@
     <!--スマホではコイン情報（行21~29）をデフォルトで表示すると、実際のデータの表示部分がかなり下になるため、表示非表示を切り替え可能にしました。-->
     <div class="p-coinsbtn__coinshow">
       <div class="p-panel__ctrend">
-        <button class="p-coinsbtn__toshowcoin" v-on:click ="coinbuttonShow()">各コイン情報をチェックする</button>
+        <button class="p-coinsbtn__toshowcoin" v-on:click ="coinbuttonShow()">各コイン情報をチェック</button>
       </div>
       <div class="p-panel__ctrend">
-        <button class="p-coinsbtn__highlight" v-on:click="resetCoin()">コイン情報をリセットする</button>
+        <button class="p-coinsbtn__highlight" v-on:click="resetCoin()">コイン情報をリセット</button>
       </div>
     </div>
 

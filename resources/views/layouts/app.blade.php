@@ -56,18 +56,18 @@
             <li class="l-menu__item"><a class="l-menu__link" href="{{ route('qa') }}">Q&A</a></li>
             
             <!--SPでのみ表示-->
-            <li class="u-mark__sp">{{ Auth::user()->name }}</li> 
+            <li class="l-menu__item u-mark__sp">{{ Auth::user()->name }}</li> 
             <!--twitterアカウントがあれば表示-->
             @if (Auth::user()->nickname)
-            <li class="u-mark__sp"><a href="https://twitter.com/{{ Auth::user()->nickname}}" target="_blank"><img src="{{ Auth::user()->avatar}}" class="p-header__icon"></a></li>
+            <li class="l-menu__item u-mark__sp"><a class="l-menu__link" href="https://twitter.com/{{ Auth::user()->nickname}}" target="_blank"><img src="{{ Auth::user()->avatar}}" class="p-header__icon"></a></li>
             @endif
-            <li>本日のフォロー数：{{ Auth::user()->follow_count}}</li>
-            <li><a href="{{ url('auth/twitter/logout')  }}">ログアウト</a></li>
+            <li class="l-menu__item u-header__follow">本日のフォロー数：{{ Auth::user()->follow_count}}</li>
+            <li class="l-menu__item"><a class="l-menu__link" href="{{ url('auth/twitter/logout') }}">ログアウト</a></li>
 
             <!--PCでのみ表示-->
-            <li class="p-header__user">{{Auth::user()->name}}</li>
+            <li class="l-menu__item p-header__user">{{Auth::user()->name}}</li>
             @if (Auth::user()->nickname)
-            <li><a href="https://twitter.com/{{Auth::user()->nickname}}" target="_blank"><img src="{{Auth::user()->avatar}}" class="p-header__icon"></a></li>
+            <li class="l-menu__item"><a class="l-menu__link" href="https://twitter.com/{{Auth::user()->nickname}}" target="_blank"><img src="{{Auth::user()->avatar}}" class="p-header__icon"></a></li>
             @endif
 
         @endguest
