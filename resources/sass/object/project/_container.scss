@@ -1,0 +1,85 @@
+
+// ==================================
+// container
+// ==================================
+.p-container {
+    width: $site-width;
+    @include mq() {
+      width: 100%;
+    }
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    &__fluid {
+      width: 100%;
+    }
+    &__title {
+      font-weight: bold;
+      text-align: center;
+      font-size: $font-size_3l;
+      margin-bottom: $space_3l;
+      @include mq() {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    &__p{
+      font-weight: bold;
+      text-align: center;
+      font-size: $font-size_l;
+      margin-bottom: $space_l;
+      @include mq() {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    &__subtitle {
+      font-weight: bold;
+      text-align: center;
+      font-size: $font-size_xl;
+      margin-bottom: $space_3l;
+      @include mq() {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    &__body {
+      @include mq() {
+        padding-left: $space_m;
+        padding-right: $space_m;
+      }
+    }
+    &__ornament {
+      .container-title {
+        span { // TODO: リファクタ必要（span以外を使うことも考えてclass名で指定すること）
+          display: inline-block;
+          background: #fff;
+          padding: 0 10px;
+          position: relative;
+          z-index: 1;
+        }
+        &:before, &:after {
+          border-top: 1px solid #2e1f1a;
+          content: "";
+          display: block;
+          position: relative;
+          z-index: 0;
+        }
+        &:before {
+          top: 28px;
+        }
+        &:after {
+          top: -28px;
+        }
+        &--lightGray {
+          span {
+            background: #f8f7fc;
+          }
+        }
+      }
+    }
+  }
