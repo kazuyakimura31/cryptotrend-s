@@ -4,8 +4,8 @@
 
   <section>
   
-    <!--過去のツイート数集計を表示させるラジオボタン。-->
-    <!--それぞれのボタンをクリックすると、日、時間、週間のツイート数を表示させるメソッドが発火。-->
+    <!--過去のツイート数を表示するボタン。-->
+    <!--各ボタンをクリックすると、過去1時間、過去1日、過去1週間のツイート数を表示させるメソッドが発火。-->
     <div class="p-coinsbtn__container">
       <div class="p-panel__cource">
         <label v-bind:class='{btn_active:hour_show}'><input class="p-coinsbtn" v-on:click="showHour" type="radio" name="tweet">過去1時間</label>
@@ -19,8 +19,7 @@
     </div>
     <div class="u-mb--l"></div>
 
-    <!--コイン一覧のチェックボックスの表示非表示とリセットボタン。-->
-    <!--スマホではコイン情報（行21~29）をデフォルトで表示すると、実際のデータの表示部分がかなり下になるため、表示非表示を切り替え可能にしました。-->
+    <!--コイン一覧リストの表示非表示ボタンとリセットボタン。-->
     <div class="p-coinsbtn__coinshow">
       <div class="p-panel__ctrend">
         <button class="p-coinsbtn__toshowcoin" v-on:click ="coinbuttonShow()">各コイン情報をチェック</button>
@@ -30,7 +29,7 @@
       </div>
     </div>
 
-    <!--各種コインの情報を表示させるチェックボックス。check_showがtrueになれば表示される。-->
+    <!--各種コイン情報を表示するボックス。check_showがtrueで表示。-->
     <div class="p-coinsbtn__coin__container" v-if="check_show">
       <p>仮想通貨名をクリックすると各コイン情報が表示されます</p>
       <div class="p-coinsbtn__coin" v-for="pcoin in coins" v-bind:key="pcoin.id">
@@ -42,8 +41,7 @@
   </section>
 
   <section class="p-coinrank__container">
-    <!-- ツイート数ランキング / 過去1時間」-->
-    <!--hour_showがtrueになると表示。sortCoinsByHourをv-forでループ表示。-->
+    <!-- ツイート数ランキング / 過去1時間」。hour_showがtrueになると表示。-->
     <div class="p-coinrank__table" v-if="hour_show">
       <h3>過去1時間のツイート数 <span> 更新：{{hour}}</span></h3>
       <table>
@@ -54,33 +52,31 @@
       </table>
     </div>
 
-    <!--ツイート数ランキング / 過去1日 -->
-    <!--day_showがtrueになると表示。sortCoinsByDayをv-forでループ表示。-->
+    <!--ツイート数ランキング / 過去1日。day_showがtrueになると表示。-->
     <div class="p-coinrank__table" v-if="day_show">
       <h3>過去1日のツイート数 <span> 更新：{{day}}</span></h3>
       <table>
         <th>順位</th><th>コイン名</th><th>ツイート</th>
         <tr v-for="(coin,i) in sortCoinsByDay" v-bind:key="coin.id">
-        <td>{{ i + 1 }}</td><td><a :href="'https://twitter.com/search?q=' + coin.name + '&src=typed_query'" target="_blank">{{coin.name}}</a></td> <td>{{coin.day}}</td>
+        <td>{{ i + 1 }}</td><td><a v-bind:href="'https://twitter.com/search?q=' + coin.name + '&src=typed_query'" target="_blank">{{coin.name}}</a></td> <td>{{coin.day}}</td>
         </tr>
       </table>
     </div>
 
-    <!--ツイート数ランキング / 過去1週間 -->
-    <!--week_showがtrueになると表示。sortCoinsByWeekをv-forでループ表示。-->
+    <!--ツイート数ランキング / 過去1週間。week_showがtrueになると表示。-->
     <div class="p-coinrank__table" v-if="week_show">
       <h3>過去1週間のツイート数 <span> 更新：{{week}}</span></h3>
       <table>
         <th>順位</th><th>コイン名</th><th>ツイート</th>
         <tr v-for="(coin,i) in sortCoinsByWeek" v-bind:key="coin.id">
-        <td>{{ i + 1 }}</td><td><a :href="'https://twitter.com/search?q=' + coin.name + '&src=typed_query'" target="_blank">{{coin.name}}</a></td> <td>{{coin.week}}</td>
+        <td>{{ i + 1 }}</td><td><a v-bind:href="'https://twitter.com/search?q=' + coin.name + '&src=typed_query'" target="_blank">{{coin.name}}</a></td> <td>{{coin.week}}</td>
         </tr>
       </table>
     </div>
 
     <!--各種コインごとの情報（showCoins）をv-forでループ表示。-->
     <div v-for="pcoin in showCoins" class="p-coinrank__table">
-      <h3><a :href="'https://twitter.com/search?q=' + pcoin.name + '&src=typed_query'" target="_blank">{{ pcoin.name }}</a></h3>
+      <h3><a v-bind:href="'https://twitter.com/search?q=' + pcoin.name + '&src=typed_query'" target="_blank">{{ pcoin.name }}</a></h3>
       <table>
         <th>ツイート数（過去1時間）</th><th>ツイート数（過去1日）</th><th>ツイート数（過去1週間）</th>
         <tr>
@@ -104,8 +100,8 @@
 
 <script>
   export default {
-    props:[ //それぞれcoinのindexページから取得
-    'coin_ajax', //coinのデータを取得するためのajaxに使うURL。
+    props:[
+    'coin_ajax', //coinデータ取得のためのajaxに使うURL。
     'hour', //過去1時間のデータ。
     'day', //過去1日のデータ
     'week' //過去1習慣のデータ
@@ -113,17 +109,17 @@
     data:function(){
       return{
         coins:[],
-        showCoins:[], //コインのツイート数、取引額の見た目上のデータをここに詰め込む
-        exitCoins:[], //コインのツイート数、取引額の実際のデータをここに詰め込む
-        link_before:'https://twitter.com/search?q=', //ツイッター上にリンクするためのURL情報前半
-        link_after:'&src=typed_query',               //同上
-        hour_show:false, //trueになれば1時間ごとのツイート数を表示
-        day_show:false, //trueになれば1日ごとのツイート数を表示
-        week_show:false, //trueになれば1週間ごとのツイート数を表示
-        check_show:false, //trueになればコインボタンの表示を行う。
+        showCoins:[], //コインのツイート数、取引額を入れる
+        exitCoins:[], //コインのツイート数、取引額を入れる
+        link_before:'https://twitter.com/search?q=', //ツイッター上でのURL情報前半
+        link_after:'&src=typed_query',
+        hour_show:false, //trueなら、1時間ごとのツイート数を表示
+        day_show:false, //trueなら、1日ごとのツイート数を表示
+        week_show:false, //trueなら、1週間ごとのツイート数を表示
+        check_show:false, //trueなら、コインボタンを表示
       }
     },
-    //ページ表示の時点では1時間ごとの表示を行う。
+    //ページ表示の時点では1時間ごとの表示。
     mounted(){
       this.showHour();
       let self = this;
@@ -133,7 +129,7 @@
         });
     },
     computed:{
-      //時間ごとのツイート数を多い順に並び替える算出プロパティ。hour_showは。
+      //時間ごとのツイート数を多い順に並び替えるプロパティ。
       sortCoinsByHour:function(){
         if(this.hour_show){
           let arr =this.coins;
@@ -142,7 +138,7 @@
           });
         }
       },
-      //1日ごとのツイート数を多い順に並び替える。
+      //1日ごとのツイート数を多い順に並替え。
       sortCoinsByDay:function(){
         if(this.day_show){
           let arr =this.coins;
@@ -151,7 +147,7 @@
           });
         }
       },
-      //1週間ごとのツイート数を多い順に並び替える。
+      //1週間ごとのツイート数を多い順に並替え。
       sortCoinsByWeek:function(){
         if(this.week_show){
           let arr =this.coins;
@@ -162,7 +158,7 @@
       }
     },
     methods:{
-      //1時間ごとのコインのツイート数を出すメソッド
+      //1時間毎のコインのツイート数を出す
       showHour:function(){
       this.hour_show = true;
       console.log(this.hour_show);
@@ -172,7 +168,7 @@
       this.day_show = false;
       this.week_show = false;
       },
-      //1日ごとのコインのツイート数を出すメソッド
+      //1日毎のコインのツイート数を出す
       showDay:function(){
         this.day_show = true;
         console.log(this.day_show);
@@ -182,7 +178,7 @@
         this.hour_show = false;
         this.week_show = false;
       },
-      //1週間ごとのコインのツイート数を出すメソッド
+      //1週間毎のコインのツイート数を出す
       showWeek:function(){
         this.week_show = true;
         console.log(this.week_show);
@@ -192,7 +188,7 @@
         this.hour_show = false;
         this.day_show = false;
       },
-      //exitCoinsは表示上のコインではなく、データ上登録されているcoinデータ。
+      //exitCoinsはデータ上登録されているcoinデータ。
       pushCoin(pcoin){
         //exitCoinにpcoin.nameがなければ追加する
         if (this.exitCoins.indexOf(pcoin.name) == -1){
@@ -209,7 +205,7 @@
           console.log(this.exitCoins);
         }
       },
-      //表示内容を初期化するメソッド。
+      //表示内容を初期化する
       resetCoin(){
         this.showCoins = [];
         this.exitCoins = [];
@@ -218,15 +214,14 @@
         this.week_show = false;
         this.resetCheckbox();
       },
-      //チェックボックスのチェックをリセットするメソッド。
-      //期間集計を表示するときにも使うため「resetCoin」とは分けています。
+      //チェックボックスのチェックをリセットする。
       resetCheckbox(){
         let checkboxs = document.getElementsByClassName( "p-coinsbtn__coin__input" );
         for (var i=0; i<checkboxs.length; i++){
            checkboxs[i].checked = false;
         }
       },
-      //コインの表示をするためのボックスを出し入れするメソッド。
+      //コイン表示をするためのボックスを出し入れする。
       coinbuttonShow(){
        console.log("スタート");
        this.check_show = !this.check_show;

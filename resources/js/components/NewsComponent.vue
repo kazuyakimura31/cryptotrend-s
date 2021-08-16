@@ -1,5 +1,5 @@
 <template>
-<!--各ニュースをfor文でまわす-->
+<!--ニュースをfor文でまわす-->
 <section class="p-container__body">
       <div class="p-panel__group p-panel__group--flex">
         <div v-for="list in list_gn" class="p-panel p-panel__border p-panel__cnews">

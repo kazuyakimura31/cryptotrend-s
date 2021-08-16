@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -19,8 +20,8 @@ class FollowsController extends Controller
     // twitter認証
     public function twitteroauth(){
         $config = config('services');
-        $consumerKey = $config['twitter']['client_id'];	
-        $consumerSecret = $config['twitter']['client_secret'];
+        $consumerKey = $config['twitter']['client_id'];	// APIキー
+        $consumerSecret = $config['twitter']['client_secret']; // APIシークレット
         $accessToken = (Session('user_token'));	// ログインユーザーのアクセストークン
         $accessTokenSecret = (Session('user_tokensecret'));	// ログインユーザーのアクセストークンシークレット
 
@@ -37,7 +38,7 @@ class FollowsController extends Controller
         Log::debug("follow_check：".$follow_check);
 
         if($follow_check == 1){
-            Session::put('follow', true);//セッションにオートフォロー実施中である旨を入れる。
+            Session::put('follow', true);//セッション：オートフォロー実施中（true）にする。
         }else{
             Session::forget('follow');
         }
@@ -100,6 +101,7 @@ class FollowsController extends Controller
     }
 
 
+    //--------フォローアクション
     public function follow(Request $request){
         Log::debug("--------フォローアクションです--------");
 
@@ -121,6 +123,7 @@ class FollowsController extends Controller
         
     }
 
+    //--------自動フォローのON/OFFを切替え
     public function autoonfollow(Request $request){
         Log::debug("--------自動フォローのON/OFFを切替えます。--------");
 
@@ -195,7 +198,7 @@ class FollowsController extends Controller
     }
 
 
-    // 自動フォロー機能。cron定期実行（15分に１回）。上限：15/15min 1000/1day。
+    // --------自動フォロー機能。cron定期実行（15分に１回）。上限：15/15min 1000/1day。
     // DBの「$user->autofollow:１」の場合に実施。
     public static function autofollow(){
         Log::debug("------オートフォロー開始------");
@@ -248,8 +251,7 @@ class FollowsController extends Controller
 
                 // $temp_userが15未満の場合
                 if($c < 15){
-
-                    for($j = 0;  $j < $c; $j++){//15を超えないように。
+                    for($j = 0;  $j < $c; $j++){
                         if(is_null($lookupuser[$j]->following)){
                           array_push($temp_user,$lookupuser[$j]->screen_name);
                         }
@@ -257,7 +259,7 @@ class FollowsController extends Controller
                 // $temp_userが15以上の場合
                 }elseif(15 <= $c){
 
-                    for($j = 0;  $j < 15; $j++){//15を超えないように。
+                    for($j = 0;  $j < 15; $j++){
                         if(is_null($lookupuser[$j]->following)){
                         array_push($temp_user,$lookupuser[$j]->screen_name);
                         }
@@ -292,3 +294,4 @@ class FollowsController extends Controller
     }
 
 }
+

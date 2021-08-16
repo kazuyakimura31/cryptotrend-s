@@ -4,7 +4,7 @@
 @section('keywords', 'CryptoTrend,仮想通貨,仮想通貨トレンド,twitter,自動フォロー,仮想通貨ニュース')
 
 @section('content')
-<!-- list_gnをjsonにしてvueに渡す -->
+<!-- list_gnをjsonでvueに渡す -->
 <section class="p-container p-container__ornament" id="cnews">
   <h2 class="p-container__title"><i class="fas fa-newspaper"></i>仮想通貨ニュース</span></h2>
   <p class="p-cnews__text u-mb--xl">

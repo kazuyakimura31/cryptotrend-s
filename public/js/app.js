@@ -1797,13 +1797,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: [//それぞれcoinのindexページから取得
-  'coin_ajax', //coinのデータを取得するためのajaxに使うURL。
+  props: ['coin_ajax', //coinデータ取得のためのajaxに使うURL。
   'hour', //過去1時間のデータ。
   'day', //過去1日のデータ
   'week' //過去1習慣のデータ
@@ -1812,24 +1807,23 @@ __webpack_require__.r(__webpack_exports__);
     return {
       coins: [],
       showCoins: [],
-      //コインのツイート数、取引額の見た目上のデータをここに詰め込む
+      //コインのツイート数、取引額を入れる
       exitCoins: [],
-      //コインのツイート数、取引額の実際のデータをここに詰め込む
+      //コインのツイート数、取引額を入れる
       link_before: 'https://twitter.com/search?q=',
-      //ツイッター上にリンクするためのURL情報前半
+      //ツイッター上でのURL情報前半
       link_after: '&src=typed_query',
-      //同上
       hour_show: false,
-      //trueになれば1時間ごとのツイート数を表示
+      //trueなら、1時間ごとのツイート数を表示
       day_show: false,
-      //trueになれば1日ごとのツイート数を表示
+      //trueなら、1日ごとのツイート数を表示
       week_show: false,
-      //trueになれば1週間ごとのツイート数を表示
-      check_show: false //trueになればコインボタンの表示を行う。
+      //trueなら、1週間ごとのツイート数を表示
+      check_show: false //trueなら、コインボタンを表示
 
     };
   },
-  //ページ表示の時点では1時間ごとの表示を行う。
+  //ページ表示の時点では1時間ごとの表示。
   mounted: function mounted() {
     this.showHour();
     var self = this;
@@ -1839,7 +1833,7 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   computed: {
-    //時間ごとのツイート数を多い順に並び替える算出プロパティ。hour_showは。
+    //時間ごとのツイート数を多い順に並び替えるプロパティ。
     sortCoinsByHour: function sortCoinsByHour() {
       if (this.hour_show) {
         var arr = this.coins;
@@ -1848,7 +1842,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    //1日ごとのツイート数を多い順に並び替える。
+    //1日ごとのツイート数を多い順に並替え。
     sortCoinsByDay: function sortCoinsByDay() {
       if (this.day_show) {
         var arr = this.coins;
@@ -1857,7 +1851,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    //1週間ごとのツイート数を多い順に並び替える。
+    //1週間ごとのツイート数を多い順に並替え。
     sortCoinsByWeek: function sortCoinsByWeek() {
       if (this.week_show) {
         var arr = this.coins;
@@ -1868,7 +1862,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    //1時間ごとのコインのツイート数を出すメソッド
+    //1時間毎のコインのツイート数を出す
     showHour: function showHour() {
       this.hour_show = true;
       console.log(this.hour_show);
@@ -1878,7 +1872,7 @@ __webpack_require__.r(__webpack_exports__);
       this.day_show = false;
       this.week_show = false;
     },
-    //1日ごとのコインのツイート数を出すメソッド
+    //1日毎のコインのツイート数を出す
     showDay: function showDay() {
       this.day_show = true;
       console.log(this.day_show);
@@ -1888,7 +1882,7 @@ __webpack_require__.r(__webpack_exports__);
       this.hour_show = false;
       this.week_show = false;
     },
-    //1週間ごとのコインのツイート数を出すメソッド
+    //1週間毎のコインのツイート数を出す
     showWeek: function showWeek() {
       this.week_show = true;
       console.log(this.week_show);
@@ -1898,7 +1892,7 @@ __webpack_require__.r(__webpack_exports__);
       this.hour_show = false;
       this.day_show = false;
     },
-    //exitCoinsは表示上のコインではなく、データ上登録されているcoinデータ。
+    //exitCoinsはデータ上登録されているcoinデータ。
     pushCoin: function pushCoin(pcoin) {
       //exitCoinにpcoin.nameがなければ追加する
       if (this.exitCoins.indexOf(pcoin.name) == -1) {
@@ -1919,7 +1913,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(this.exitCoins);
       }
     },
-    //表示内容を初期化するメソッド。
+    //表示内容を初期化する
     resetCoin: function resetCoin() {
       this.showCoins = [];
       this.exitCoins = [];
@@ -1928,8 +1922,7 @@ __webpack_require__.r(__webpack_exports__);
       this.week_show = false;
       this.resetCheckbox();
     },
-    //チェックボックスのチェックをリセットするメソッド。
-    //期間集計を表示するときにも使うため「resetCoin」とは分けています。
+    //チェックボックスのチェックをリセットする。
     resetCheckbox: function resetCheckbox() {
       var checkboxs = document.getElementsByClassName("p-coinsbtn__coin__input");
 
@@ -1937,7 +1930,7 @@ __webpack_require__.r(__webpack_exports__);
         checkboxs[i].checked = false;
       }
     },
-    //コインの表示をするためのボックスを出し入れするメソッド。
+    //コイン表示をするためのボックスを出し入れする。
     coinbuttonShow: function coinbuttonShow() {
       console.log("スタート");
       this.check_show = !this.check_show;
@@ -1995,27 +1988,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['users', //利用中のユーザーがフォローしていないアカウントの情報。Twitter認証していればこの情報を出します。
-  'follow_users', //ランダムにDBから取得したユーザー情報
-  'follow_ajax', //個別フォローするurlへのポストの時のurl
-  'follow_all_ajax', //url情報。autofollow/allです。
-  'follow_check' //db上から取得したautofollowの状態。1ならばtrue、つまり自動フォロー中。
+  props: ['users', //利用ユーザーがフォローしていないアカウントの情報。Twitter認証してる時は出す。
+  'follow_users', //ランダムにDB取得したユーザー情報
+  'follow_ajax', //個別フォローするurlへのポストのurl
+  'follow_all_ajax', //url情報。autofollow/all。
+  'follow_check' //DB取得したautofollowの状態。1ならばtrueで自動フォロー中。
   ],
   data: function data() {
     return {
       el: '#follows',
       reset_ok: true,
       ongoing: "",
-      //自動フォローを実施している状態。trueであれば自動フォローON。
+      //自動フォロー実施中。trueであれば自動フォローON。
       users: this.users,
-      //usersをusersに詰め込んでおく。
+      //usersをusersに詰める。
       auto_status: this.follow_check
     };
   },
   mounted: function mounted() {
-    //mountedでページアクセス時に自動フォローを実施しているか判定。1なら自動フォロー中で、ongoingをtrue。
-    //ongoingがtrueの場合、「自動フォロー実施中です」という表示が出る。
-    //console.log(this.autofollow_check);
+    //自動フォローを実施しているか判定。1なら自動フォロー中で、ongoingをtrue。
     if (this.follow_check == 1) {
       this.ongoing = true;
     } else {
@@ -2024,9 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     //個別フォローのメソッド。
-    //Autofollowコントローラーのfollowメソッドへフォロー対象のユーザーデータとともにajaxでアクセス。
-    //アクセス先でそのユーザーデータを元にフォローし、「フォローしました」アラートと共に、
-    //対象のユーザーデータを「users」から削除（画面から非表示にする）
+    //followコントローラーのfollowメソッドへフォロー対象のユーザーデータとともにajaxでアクセス。
     follow: function follow(user, index) {
       var _this = this;
 
@@ -2047,38 +2036,32 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    //自動フォローを切り替えた際にボタンの表示、「自動フォロー実施中です」の表示非表示を切り替えるメソッド
+    //自動フォローを切替た時にボタンを表示、「自動フォロー実施中です」の表示非表示を切替え。
     checkOngoing: function checkOngoing() {
-      //console.log("checkOngoingを呼び出します");
       if (this.follow_check == 1 || true) {
         this.ongoing = true;
       } else {
         this.ongoing = false;
-      } //console.log("this.ongoingの値です");
-      //console.log(this.ongoing);
+      } //console.log(this.ongoing);
 
     },
-    //まとめてフォロー（自動フォローのONOFFを切り替えるメソッド）
+    //まとめてフォロー（自動フォローのONOFF切替えメソッド）
     followStart: function followStart() {
       var self = this;
-      var url = this.follow_all_ajax; //ajax先のurl
-
-      var auto_status = this.auto_status; //今現在のDB上のautofollowの状態が1の場合オートフォローの状態を0にする
+      var url = this.follow_all_ajax;
+      var auto_status = this.auto_status; //DB上のfollow状態が1の場合オートフォローを0にする
 
       if (self.auto_status == 1) {
         //console.log(self.auto_status);
-        //console.log("今現在の値です");
         this.ongoing = true;
         self.auto_status = 0;
       } else {
         //console.log(self.auto_status);
-        //console.log("今現在の値です");
         this.ongoing = false;
-        self.auto_status = 1; //今現在のフォローの状態が1ではない場合、フォローの状態を1にする
+        self.auto_status = 1; //フォローが1ではない時、フォローを1にする
       }
 
-      var request = self.auto_status; //console.log("切り替え後のauto_statusの状態です");
-      //console.log(request);
+      var request = self.auto_status; //console.log(request);
 
       axios.post(url, {
         request: request
@@ -2091,7 +2074,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   computed: {
-    //個別フォローをした際にfollowingがfalseのユーザーを表示から削除する算出プロパティ
+    //個別フォローをした時にfollowingがfalseのユーザーを表示から削除する
     nofollow: function nofollow() {
       return this.users.filter(function (user) {
         return user.following == false;

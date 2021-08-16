@@ -27,7 +27,7 @@
   </div>
 </section>
 
-<!-- ニュース -->
+<!-- 新着ニュース -->
 <section class="p-container p-container__ornament" id="news">
   <h2 class="p-container__title"><span>NEWS</span></h2>
   <div class="p-container__body">

@@ -12,8 +12,8 @@
 
 <section class="p-container__body">
 
+<!--セッションにtoday_follow_endがある時、本日のフォローができない。-->
 @if (session('today_follow_end'))
-<!--セッション情報にtoday_follow_endが入っている場合、本日のフォローができない。-->>
 
 <div class="p-container">
   <p class="p-follows__text">
@@ -27,11 +27,11 @@
 
     <section id ="main">
     @if (session('user_token'))
-    <!--ツイッター認証をしている場合は下記コンポーネントを表示。受け渡す変数の内容は以下の通りです。-->
-    <!--follow_checkはセッションの状態。1ならば自動フォロー実施中。-->
-    <!--usersはログインユーザーがフォローしてないユーザー一覧のスクリーンネーム。-->
-    <!--follow_ajaxは個別フォローするurlへのポストの時のurl-->
-    <!--follow_all_ajaxは自動フォローをonにするポストのurl-->
+    <!--ツイッター認証がある時は下記のコンポーネントを表示。-->
+     <!--users：ログインユーザーがフォローしてないユーザー一覧-->
+    <!--follow_check：セッションの状態。1の時は自動フォロー実施中。-->
+    <!--follow_ajax：個別でフォローするポストのurl-->
+    <!--follow_all_ajax：自動フォローをonにするポストのurl-->
 
     <!--$follow_checkこの値で現在オートフォロー中か判断-->
     <div id="followsapp">
@@ -47,7 +47,7 @@
 
     @else
 
-    <!--ツイッター認証をしていない場合は下記を表示-->
+    <!--ツイッター認証をしていない時に表示-->
       <p class="p-follows__text">各アカウントをフォローをするには「Twitter認証」をしてください。</p>
       <div class="c-btn c-btn__corp c-btn__l u-mt--xl">
         <a class="u-ft__btn" href="{{ url('auth/twitter') }}">Twitter認証をする</a>

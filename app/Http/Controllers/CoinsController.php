@@ -85,8 +85,9 @@ class CoinsController extends Controller
         }
         
         $btc = $eth = $etc = $lsk = $fct = $xrp = $xem = $ltc = $bch = $mona = $xlm = $qtum = $bat = $iost = $enj = $omg = $plt = 0;
-        $tweet_count = count($tweet_results);//ツイート数
+        $tweet_count = count($tweet_results);
 
+        //一致するテキストがあればカウント
         for($i = 0; $i < $tweet_count; $i++){
             if(stristr($tweet_results[$i]['text'],"ビットコイン") !== false || stristr($tweet_results[$i]['text'],"btc") !== false){
                 $btc++;
@@ -274,8 +275,9 @@ class CoinsController extends Controller
         }
         
         $btc = $eth = $etc = $lsk = $fct = $xrp = $xem = $ltc = $bch = $mona = $xlm = $qtum = $bat = $iost = $enj = $omg = $plt = 0;
-        $tweet_count = count($tweet_results);//ツイート数
+        $tweet_count = count($tweet_results);
 
+        //一致するテキストがあればカウント
         for($i = 0; $i < $tweet_count; $i++){
             if(stristr($tweet_results[$i]['text'],"ビットコイン") !== false || stristr($tweet_results[$i]['text'],"btc") !== false){
                 $btc++;
@@ -463,8 +465,9 @@ class CoinsController extends Controller
         }
         
         $btc = $eth = $etc = $lsk = $fct = $xrp = $xem = $ltc = $bch = $mona = $xlm = $qtum = $bat = $iost = $enj = $omg = $plt = 0;
-        $tweet_count = count($tweet_results);//ツイート数
+        $tweet_count = count($tweet_results);
 
+        //一致するテキストがあればカウント
         for($i = 0; $i < $tweet_count; $i++){
             if(stristr($tweet_results[$i]['text'],"ビットコイン") !== false || stristr($tweet_results[$i]['text'],"btc") !== false){
                 $btc++;

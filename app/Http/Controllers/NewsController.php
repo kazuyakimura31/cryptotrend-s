@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -24,10 +25,10 @@ class NewsController extends Controller
         //---- APIへのリクエストURL生成
         $api_url = $API_BASE_URL.$query;
     
-        //記事を取り出す
+        //ニュースを取り出す
         $items = simplexml_load_file($api_url)->channel->item;
     
-        //記事のタイトルとURLを取り出して配列に格納
+        //ニュースのタイトルとURLを配列に格納
         for ($i = 0; $i < count($items); $i++) {
     
             $list[$i]['title'] = mb_convert_encoding($items[$i]->title,"UTF-8", "auto");
@@ -37,7 +38,7 @@ class NewsController extends Controller
     
         }
     
-        //$max_num以上の記事数の場合は切り捨て
+        //$max_num以上のニュース数の場合は表示しない
         if(count($list)>$max_num){
             for ($i = 0; $i < $max_num; $i++){
                 $list_gn[$i] = $list{$i};

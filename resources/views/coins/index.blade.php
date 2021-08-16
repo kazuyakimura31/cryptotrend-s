@@ -10,7 +10,7 @@
     Twitterでの各仮想通貨の「ツイート数」と「取引価格」を提供しています。
   </p>
 
-<!--coinデータを取得するためのajaxのURL。-->
+<!--coinデータ取得のajaxのURL。-->
 <!--それぞれ期間分（hour,day,week）のツイート数を取得。-->
 <div id="coinsapp">
   <coins-component

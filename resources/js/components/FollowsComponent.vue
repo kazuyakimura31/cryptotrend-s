@@ -39,25 +39,23 @@
 <script>
 export default{
     props:[
-      'users', //利用中のユーザーがフォローしていないアカウントの情報。Twitter認証していればこの情報を出します。
-      'follow_users', //ランダムにDBから取得したユーザー情報
-      'follow_ajax',//個別フォローするurlへのポストの時のurl
-      'follow_all_ajax',//url情報。autofollow/allです。
-      'follow_check' //db上から取得したautofollowの状態。1ならばtrue、つまり自動フォロー中。
+      'users', //利用ユーザーがフォローしていないアカウントの情報。Twitter認証してる時は出す。
+      'follow_users', //ランダムにDB取得したユーザー情報
+      'follow_ajax',//個別フォローするurlへのポストのurl
+      'follow_all_ajax',//url情報。autofollow/all。
+      'follow_check' //DB取得したautofollowの状態。1ならばtrueで自動フォロー中。
     ],
     data:function(){
       return{
         el: '#follows',
         reset_ok:true,
-        ongoing:"", //自動フォローを実施している状態。trueであれば自動フォローON。
-        users:this.users, //usersをusersに詰め込んでおく。
+        ongoing:"", //自動フォロー実施中。trueであれば自動フォローON。
+        users:this.users, //usersをusersに詰める。
         auto_status:this.follow_check
       }
     },
     mounted(){
-      //mountedでページアクセス時に自動フォローを実施しているか判定。1なら自動フォロー中で、ongoingをtrue。
-      //ongoingがtrueの場合、「自動フォロー実施中です」という表示が出る。
-      //console.log(this.autofollow_check);
+      //自動フォローを実施しているか判定。1なら自動フォロー中で、ongoingをtrue。
       if(this.follow_check == 1){
         this.ongoing = true;
       }else{
@@ -66,9 +64,7 @@ export default{
     },
     methods:{
       //個別フォローのメソッド。
-      //Autofollowコントローラーのfollowメソッドへフォロー対象のユーザーデータとともにajaxでアクセス。
-      //アクセス先でそのユーザーデータを元にフォローし、「フォローしました」アラートと共に、
-      //対象のユーザーデータを「users」から削除（画面から非表示にする）
+      //followコントローラーのfollowメソッドへフォロー対象のユーザーデータとともにajaxでアクセス。
       follow:function(user,index){
         const data = {
         user_id: user.id,
@@ -84,36 +80,31 @@ export default{
           this.users.splice(index,1)
           }).catch( error => { console.log(error); });
       },
-      //自動フォローを切り替えた際にボタンの表示、「自動フォロー実施中です」の表示非表示を切り替えるメソッド
+      //自動フォローを切替た時にボタンを表示、「自動フォロー実施中です」の表示非表示を切替え。
       checkOngoing:function(){
-        //console.log("checkOngoingを呼び出します");
         if(this.follow_check == 1 || true){
           this.ongoing = true;
         }else{
           this.ongoing = false;
         }
-        //console.log("this.ongoingの値です");
         //console.log(this.ongoing);
       },
-      //まとめてフォロー（自動フォローのONOFFを切り替えるメソッド）
+      //まとめてフォロー（自動フォローのONOFF切替えメソッド）
       followStart:function(){
         let self = this;
-        let url = this.follow_all_ajax; //ajax先のurl
+        let url = this.follow_all_ajax;
         let auto_status = this.auto_status;
-        //今現在のDB上のautofollowの状態が1の場合オートフォローの状態を0にする
+        //DB上のfollow状態が1の場合オートフォローを0にする
         if(self.auto_status == 1){
           //console.log(self.auto_status);
-          //console.log("今現在の値です");
           this.ongoing = true;
           self.auto_status = 0;
         }else{
           //console.log(self.auto_status);
-          //console.log("今現在の値です");
           this.ongoing = false;
-          self.auto_status  = 1; //今現在のフォローの状態が1ではない場合、フォローの状態を1にする
+          self.auto_status  = 1; //フォローが1ではない時、フォローを1にする
         }
           let request = self.auto_status;
-          //console.log("切り替え後のauto_statusの状態です");
           //console.log(request);
           axios.post(url, {
           request}).then((res)=>{
@@ -123,7 +114,7 @@ export default{
       }
     },
     computed:{
-      //個別フォローをした際にfollowingがfalseのユーザーを表示から削除する算出プロパティ
+      //個別フォローをした時にfollowingがfalseのユーザーを表示から削除する
       nofollow:function(){
       return this.users.filter(function(user){
       return user.following == false;
