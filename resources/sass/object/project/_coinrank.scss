@@ -1,0 +1,81 @@
+// ==================================
+// coinrank
+// ==================================
+.p-coinrank{
+    // &__top{
+    //   text-align: center;
+    //   font-size: 2vw;
+    //   padding: 5%;
+    // }
+    // &__each{
+    //   font-size: 50px;
+    // }
+    &__container{
+    float: left;
+    margin: 5% 5% 10% 5%;
+    width: 90%;
+    @include mq() {
+      margin: 5% 2%;
+      width: 95%;
+      min-height: 475px;
+    }
+      // h2{
+      //   padding: 5%;
+      // }
+      h3{
+        height: 20px;
+        line-height: 20px;
+        font-size: $font-size_default;
+        padding: 5px;
+        background-color: $color_corp;
+        width: 100;
+        margin: auto auto;
+        text-align: center;
+        border-bottom: 0.1px solid;
+        @include mq() {
+          font-size: $font-size_s;
+        }
+      }
+      span{
+        font-size: 9px;
+      }
+    }
+    &__table{
+      text-align: center;
+      width: 100%;
+      background-color: #eee;
+      border: 1px solid;
+      margin-bottom: 15px;
+      table{
+        width: 100%;
+      }
+      th{
+        font-size: 70%;
+        background-color: #bcf0c3;
+        border: 1px solid;
+        padding: 7px 3px;
+        vertical-align: middle;
+      }
+      td{
+        font-size:14px;
+        letter-spacing: 5px;
+        padding: 5px;
+        border: 1px solid;
+        vertical-align: middle;
+      }
+
+      tr{
+        height: 30px;
+        line-height: 30px;
+        @include mq() {
+          height: 20px;
+          line-height: 20px;
+        }
+      }
+
+      h4{
+        background-color: #bcf0c3;
+        padding: 3px;
+      }
+    }
+}
