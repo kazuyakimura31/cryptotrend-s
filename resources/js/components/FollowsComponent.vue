@@ -16,7 +16,7 @@
   </div>
 
   <!--アカウント情報一覧。usersからforで表示。-->
-  <div class="p-twiiter__container">
+  <div class="p-twitter__container">
     <h2>仮想通貨アカウント一覧</h2>
     <div v-for="(user,index) in users" v-bind:key="index" class="c-card">
       <div class="c-card__header">

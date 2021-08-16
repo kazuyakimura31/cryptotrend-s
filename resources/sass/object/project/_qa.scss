@@ -2,26 +2,25 @@
 // Q&A
 // ==================================
 .p-qa {
-    width: 80%;
-    margin: 0 auto;
-    @include mq() {
-      width: 100%;
-    }
-    &__item {
-      border-radius: 5px;
-      padding: $space_xl $space_xxl;
-      background: #f8f7fc;
-      margin-bottom: $space_3l;
-    }
-    &__title {
-      color: $color_corp;
-      font-size: $font-size_xl;
-      font-weight: bold;
-      margin-right: $space_m;
-      float: left;
-    }
-    &__p {
-      font-size: $font-size_l;
-    }
+  width: 80%;
+  margin: 0 auto;
+  @include mq() {
+    width: 100%;
   }
-  
+  &__item {
+    border-radius: 5px;
+    padding: $space_xl $space_xxl;
+    background: #f8f7fc;
+    margin-bottom: $space_3l;
+  }
+  &__title {
+    color: $color_corp;
+    font-size: $font-size_xl;
+    font-weight: bold;
+    margin-right: $space_m;
+    float: left;
+  }
+  &__p {
+    font-size: $font-size_l;
+  }
+}

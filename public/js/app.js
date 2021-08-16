@@ -38158,7 +38158,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "p-twiiter__container" },
+      { staticClass: "p-twitter__container" },
       [
         _c("h2", [_vm._v("仮想通貨アカウント一覧")]),
         _vm._v(" "),

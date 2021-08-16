@@ -19,7 +19,6 @@
 // ==========================================================================
 // 2.Layout- header/main/sidebar/footer...
 // ==========================================================================
-// @import 'layout/_billboard.scss';
 @import 'layout/_header.scss';
 @import 'layout/_main.scss';
 @import 'layout/_footer.scss';
@@ -32,7 +31,7 @@
 @import 'object/component/_card.scss';
 // @import 'object/component/_form.scss';
 @import 'object/component/_btn.scss';
-// @import 'object/component/_box.scss';
+
 
 // ==========================================================================
 // 3.Object
@@ -40,14 +39,18 @@
 // ==========================================================================
 @import 'object/project/_hero.scss';
 @import 'object/project/_container.scss';
-// @import 'object/project/_autofollow.scss';
-// @import 'object/project/_about.scss';
+@import 'object/project/_coinrank.scss';
+@import 'object/project/_panel.scss';
+@import 'object/project/_qa.scss';
+@import 'object/project/_cnews.scss';
+@import 'object/project/_form.scss';
+@import 'object/project/_coinsbtn.scss';
+@import 'object/project/_twitter.scss';
+@import 'object/project/_autofollow.scss';
+
 
 // ==========================================================================
 // 3.Object
 // 　Utility - clearfix/display/margin...
 // ==========================================================================
-// @import 'object/utility/_error.scss';
-// @import 'object/utility/_height.scss';
-// @import 'object/utility/_width.scss';
 @import 'object/utility/_utility.scss';

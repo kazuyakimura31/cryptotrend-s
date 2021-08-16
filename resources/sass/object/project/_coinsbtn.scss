@@ -1,141 +1,140 @@
-
 // ==================================
 // coinsbtn
 // ==================================
 .p-coinsbtn{
-    // position: relative;
-    // padding-left: 20px;
-    // margin-right: 20px;
-    display: none;
+  // position: relative;
+  // padding-left: 20px;
+  // margin-right: 20px;
+  display: none;
 
-    &:hover{
-      transform: translate3d(0, 1px, 0);
-      color: #007db9;
-      box-shadow: none;
-      background: #fff;
-    }
+  &:hover{
+    transform: translate3d(0, 1px, 0);
+    color: #007db9;
+    box-shadow: none;
+    background: #fff;
+  }
 
-    &__container{
+  &__container{
+    display: flex;
+    justify-content: space-between;
+    @include mq() {
+      // width: 95%;
       display: flex;
       justify-content: space-between;
-      @include mq() {
-        // width: 95%;
-        display: flex;
-        justify-content: space-between;
-      }
-      label{
-        // margin: 5px;
-        border: 1px solid #12575f;
-        padding: 15px;
-        // box-shadow: 2px 2px;
-        display: block;
-        height: 25px;
-        line-height: 25px;
-        text-align: center;
-        &:hover{
-          transform: translate3d(0, 1px, 0);
-          box-shadow: 1px 1px;
-        }
-        @include mq() {
-          // width: 200px;
-          text-align: center;
-        }
-      }
     }
-  
-    &__coin{
+    label{
+      // margin: 5px;
+      border: 1px solid #12575f;
+      padding: 15px;
+      // box-shadow: 2px 2px;
+      display: block;
       height: 25px;
       line-height: 25px;
+      text-align: center;
+      &:hover{
+        transform: translate3d(0, 1px, 0);
+        box-shadow: 1px 1px;
+      }
+      @include mq() {
+        // width: 200px;
+        text-align: center;
+      }
+    }
+  }
+
+  &__coin{
+    height: 25px;
+    line-height: 25px;
+    width: 50%;
+    float: left;
+    background-color: #00000014;
+    @include mq() {
+      font-size: 10px;
       width: 50%;
+    }
+    &__input{
+      display: none;
       float: left;
-      background-color: #00000014;
-      @include mq() {
-        font-size: 10px;
-        width: 50%;
-      }
-      &__input{
-        display: none;
-        float: left;
-      }
-      &__checkparts{
-        padding-left: 20px;
-        position:relative;
-        margin-right: 20px;
-      }
-  
-      label{
-        margin: 1px auto;
-        display: block;
-          @include mq() {
-            width: 100%;
-            display: inline-block;
-            margin: auto;
-            padding: auto;
-            box-shadow: none;
-          }
-      }
-  
-      &__container{
-        height: 70%;
-        text-align: left;
-        animation-duration: 0.3s;
-        animation-name:toup;
+    }
+    &__checkparts{
+      padding-left: 20px;
+      position:relative;
+      margin-right: 20px;
+    }
+
+    label{
+      margin: 1px auto;
+      display: block;
         @include mq() {
-          display: flex;
-          justify-content: flex-start;
-          flex-wrap: wrap;
-          height: auto;
-          background-color: #7fffdf54;
+          width: 100%;
+          display: inline-block;
+          margin: auto;
+          padding: auto;
+          box-shadow: none;
         }
-        p {
-          text-align: center;
-          font-size: $font-size_l;
-          color: #f00;
-          font-weight: bold;
-        }
-      }
     }
-    &__coinshow{
-      // width: 95%;
-      // margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      button{
-        height: 25px;
-        &:hover{
-          color: #fff;
-        }
-      }
-    }
-    &__toshowcoin{
-      width: 100%;
-      background-color: #ffff00ba;
-      height: 30px;
-      @include mq() {
-        width: 95%;
-        height: 40px;
-      }
-    }
-    &__highlight{
-      width: 100%;
-      background-color: #f80ba961;
-      height: 30px;
-      @include mq() {
-        width: 95%;
-        height: 40px;
-      }
-    }
-  }
-  
-  .btn_active{
-    background-color: #17ca94;
-  }
-  
-  .p-coinsbtn__coin__input:checked + .p-coinsbtn__coin__checkparts{
-    color: #f00;
-    font-weight: bold;
-  }
 
-  
 
+
+    &__container{
+      height: 70%;
+      text-align: left;
+      animation-duration: 0.3s;
+      animation-name:toup;
+      @include mq() {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        height: auto;
+        background-color: #7fffdf54;
+      }
+      p {
+        text-align: center;
+        font-size: $font-size_l;
+        color: #f00;
+        font-weight: bold;
+      }
+    }
+  }
+  &__coinshow{
+    // width: 95%;
+    // margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    button{
+      height: 25px;
+      &:hover{
+        color: #fff;
+      }
+    }
+  }
+  &__toshowcoin{
+    width: 100%;
+    background-color: #ffff00ba;
+    height: 30px;
+    @include mq() {
+      width: 95%;
+      height: 40px;
+    }
+  }
+  &__highlight{
+    width: 100%;
+    background-color: #f80ba961;
+    height: 30px;
+    @include mq() {
+      width: 95%;
+      height: 40px;
+    }
+  }
+}
+
+
+.btn_active{
+  background-color: #17ca94;
+}
+
+.p-coinsbtn__coin__input:checked + .p-coinsbtn__coin__checkparts{
+  color: #f00;
+  font-weight: bold;
+}

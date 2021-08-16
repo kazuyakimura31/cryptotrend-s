@@ -1,21 +1,18 @@
-
-
 // ==================================
 // Twitterアカウント
 // ==================================
 .p-twitter{
-    &__container{
+  &__container{
+    width: 100%;
+    margin: 15px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: $color_corp;
+    h2{
+      text-align: center;
       width: 100%;
-      margin: 15px auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      background-color: $color_corp;
-      h2{
-        text-align: center;
-        width: 100%;
-        margin: 28px 24px 0 0;
-      }
+      margin: 28px 24px 0 0;
     }
   }
-  
+}

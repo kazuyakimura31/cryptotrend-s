@@ -2,104 +2,105 @@
 // Twitterフォロー
 // ==================================
 .p-autofollow{
-    &__container{
-      text-align: center;
-      width: 100%;
+  &__container{
+    text-align: center;
+    width: 100%;
+    @include mq() {
+      text-align: left;
+    }
+    button{
+      height: 50px;
+      width: 50%;
+      margin: auto;
+      line-height: 50px;
+      margin: 30px auto;
+      background: $color_corp;
+      // border: 3px solid #232323;
+      font-size: 20px;
+      display: block;
+      box-shadow: 3px 2px;
       @include mq() {
-        text-align: left;
+        width:70%;
       }
-      button{
-        height: 50px;
-        width: 50%;
-        margin: auto;
-        line-height: 50px;
-        margin: 30px auto;
-        background: $color_corp;
-        // border: 3px solid #232323;
-        font-size: 20px;
-        display: block;
-        box-shadow: 3px 2px;
-        @include mq() {
-          width:70%;
-        }
-        &:hover{
-          transform: translate3d(0, 5px, 0);
-          color: #fff;;
-          box-shadow: none;
-          // background: #fff;
-        }
-      }
-  
-      h3{
-        margin: 30px auto;
-        @include mq() {
-          text-align: center;
-        }
-      }
-      input{
-        height: 20px;
-      }
-      p{
-        width: 80%;
-        margin: 25px auto;
-        line-height: 30px;
+      &:hover{
+        transform: translate3d(0, 5px, 0);
+        color: #fff;;
+        box-shadow: none;
+        // background: #fff;
       }
     }
-    &__btncontainer{
-      padding: 15px;
-      border: solid 5px #6091d3;
-      background-color: #00000014;
+
+    h3{
+      margin: 30px auto;
+      @include mq() {
+        text-align: center;
+      }
+    }
+    input{
+      height: 20px;
+    }
+    p{
       width: 80%;
-      margin: auto;
+      margin: 25px auto;
+      line-height: 30px;
     }
-  
-    &__description
-    {
-      width: 100%;
-      margin: auto;
-      animation-duration: 0.5s;
-      -webkit-animation-name: toup;
-      animation-name: toup;
-  
-      h3{
-        @include mq() {
-          font-size: 16px;
-        }
-      }
-      span{
-        background: linear-gradient(transparent 70%, yellow 70%);
-      }
-    }
-  
-    &__ongoing{
-      text-align: center;
-      color: #0351ff;
-      font-weight: bold;
-      font-size: 16px;
-      animation: 2s linear infinite blink_effect;
-    }
-  
   }
-  
-  .nowfollow{
-      background-color: #FFE100;
+  &__btncontainer{
+    padding: 15px;
+    border: solid 5px #6091d3;
+    background-color: #00000014;
+    width: 80%;
+    margin: auto;
   }
 
-  .p-follows {
-    &__title {
-      text-align: center;
-      font-size: $font-size_l;
-      font-weight: bold;
+  &__description
+  {
+    width: 100%;
+    margin: auto;
+    animation-duration: 0.5s;
+    -webkit-animation-name: toup;
+    animation-name: toup;
+
+    h3{
+      @include mq() {
+        font-size: 16px;
+      }
     }
-    &__text {
-      font-size: $font-size_l;
-      font-weight: bold;
-    }
-    &__p {
-      font-size: $font-size_default;
-    }
-    &__date {
-      font-size: $font-size_l;
+    span{
+      background: linear-gradient(transparent 70%, yellow 70%);
     }
   }
-  
+
+  &__ongoing{
+    text-align: center;
+    color: #0351ff;
+    font-weight: bold;
+    font-size: 16px;
+    animation: 2s linear infinite blink_effect;
+  }
+
+}
+
+.nowfollow{
+    background-color: #FFE100;
+}
+
+
+
+.p-follows {
+  &__title {
+    text-align: center;
+    font-size: $font-size_l;
+    font-weight: bold;
+  }
+  &__text {
+    font-size: $font-size_l;
+    font-weight: bold;
+  }
+  &__p {
+    font-size: $font-size_default;
+  }
+  &__date {
+    font-size: $font-size_l;
+  }
+}

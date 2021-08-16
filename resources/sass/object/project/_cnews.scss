@@ -2,20 +2,20 @@
 // 仮想通貨ニュース
 // ==================================
 .p-cnews {
-    &__text {
-      text-align: center;
-      font-size: $font-size_l;
-      font-weight: bold;
-    }
-    &__title {
-      color: $color_corp;
-      font-size: $font-size_l;
-      font-weight: bold;
-    }
-    &__p {
-      font-size: $font-size_default;
-    }
-    &__date {
-      font-size: $font-size_l;
-    }
+  &__text {
+    text-align: center;
+    font-size: $font-size_l;
+    font-weight: bold;
   }
+  &__title {
+    color: $color_corp;
+    font-size: $font-size_l;
+    font-weight: bold;
+  }
+  &__p {
+    font-size: $font-size_default;
+  }
+  &__date {
+    font-size: $font-size_l;
+  }
+}
