@@ -14,7 +14,7 @@ class Followsauto extends Command
      *
      * @var string
      */
-    protected $signature = 'command:followsauto';
+    protected $signature = 'batch:followsauto';
 
     /**
      * The console command description.

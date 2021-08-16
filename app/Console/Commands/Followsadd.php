@@ -14,7 +14,7 @@ class Followsadd extends Command
      *
      * @var string
      */
-    protected $signature = 'command:followsadd';
+    protected $signature = 'batch:followsadd';
 
     /**
      * The console command description.
