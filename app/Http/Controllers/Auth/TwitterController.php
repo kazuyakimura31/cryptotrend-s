@@ -47,10 +47,9 @@ class TwitterController extends Controller
 
     //ログインしているか確認
     if(Auth::check()){
-        //ログインしている＝すでにユーザー登録済みなので、ユーザーIDを取得し
-        //そのカラムにツイッター情報を追加する
+        //ログイン＝すでにユーザー登録済みなので、ユーザーIDを取得しtwitter情報を追加
   
-        $user_id = Auth::id();
+        $user_id = Auth::user()->id;
         $user_date = User::where('id',$user_id)->first();
   
         //Log::debug('最新のTwitter情報をdbに登録します。');
@@ -75,15 +74,14 @@ class TwitterController extends Controller
   
       //ログインしていない状態でツイッターデータのあるカラムを探し、なければ作る。
       private function findOrCreateUser($twitterUser){
-        //Log::debug(print_r("findOrCreateUser実施", true));
+
         $user_date = User::where('twitter_id',$twitterUser->id)->first();
-        //ツイッターのidがすでにテーブルにあれば同じツイッターidのユーザー情報を返す
+        //ツイッターidがDBにあれば同じツイッターidのユーザー情報を返却する
         if($user_date){
-          //Log::debug(print_r("twiiteridがDBにあり", true));
+
           return $user_date;
         }else{
-          //なければそのまま作成。
-          //Log::debug(print_r("twiiteridがDBになし", true));
+          //なければ作成。
           return User::create([
             'twitter_id' => $twitterUser->id,
             'nickname' => $twitterUser->nickname,
