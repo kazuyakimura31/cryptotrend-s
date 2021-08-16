@@ -699,7 +699,6 @@ img {
 }
 @media screen and (max-width: 414px) {
   .p-coinsbtn__container {
-    width: 95%;
     display: flex;
     justify-content: space-between;
   }
@@ -851,7 +850,7 @@ img {
   }
 }
 .p-coinrank__container span {
-  font-size: 10px;
+  font-size: 9px;
 }
 .p-coinrank__table {
   text-align: center;

@@ -45,7 +45,7 @@
     <!-- ツイート数ランキング / 過去1時間」-->
     <!--hour_showがtrueになると表示。sortCoinsByHourをv-forでループ表示。-->
     <div class="p-coinrank__table" v-if="hour_show">
-      <h3>過去1時間のツイート数 <span> 更新日時：{{hour}}</span></h3>
+      <h3>過去1時間のツイート数 <span> 更新：{{hour}}</span></h3>
       <table>
         <th>順位</th><th>コイン名</th><th>ツイート</th>
         <tr v-for="(coin,i) in sortCoinsByHour" v-bind:key="coin.id">
@@ -57,7 +57,7 @@
     <!--ツイート数ランキング / 過去1日 -->
     <!--day_showがtrueになると表示。sortCoinsByDayをv-forでループ表示。-->
     <div class="p-coinrank__table" v-if="day_show">
-      <h3>過去1日のツイート数 <span> 更新日時：{{day}}</span></h3>
+      <h3>過去1日のツイート数 <span> 更新：{{day}}</span></h3>
       <table>
         <th>順位</th><th>コイン名</th><th>ツイート</th>
         <tr v-for="(coin,i) in sortCoinsByDay" v-bind:key="coin.id">
@@ -69,7 +69,7 @@
     <!--ツイート数ランキング / 過去1週間 -->
     <!--week_showがtrueになると表示。sortCoinsByWeekをv-forでループ表示。-->
     <div class="p-coinrank__table" v-if="week_show">
-      <h3>過去1週間のツイート数 <span> 更新日時：{{week}}</span></h3>
+      <h3>過去1週間のツイート数 <span> 更新：{{week}}</span></h3>
       <table>
         <th>順位</th><th>コイン名</th><th>ツイート</th>
         <tr v-for="(coin,i) in sortCoinsByWeek" v-bind:key="coin.id">

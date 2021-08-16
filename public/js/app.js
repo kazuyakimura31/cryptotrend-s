@@ -37946,7 +37946,7 @@ var render = function() {
           ? _c("div", { staticClass: "p-coinrank__table" }, [
               _c("h3", [
                 _vm._v("過去1時間のツイート数 "),
-                _c("span", [_vm._v(" 更新日時：" + _vm._s(_vm.hour))])
+                _c("span", [_vm._v(" 更新：" + _vm._s(_vm.hour))])
               ]),
               _vm._v(" "),
               _c(
@@ -37988,7 +37988,7 @@ var render = function() {
           ? _c("div", { staticClass: "p-coinrank__table" }, [
               _c("h3", [
                 _vm._v("過去1日のツイート数 "),
-                _c("span", [_vm._v(" 更新日時：" + _vm._s(_vm.day))])
+                _c("span", [_vm._v(" 更新：" + _vm._s(_vm.day))])
               ]),
               _vm._v(" "),
               _c(
@@ -38030,7 +38030,7 @@ var render = function() {
           ? _c("div", { staticClass: "p-coinrank__table" }, [
               _c("h3", [
                 _vm._v("過去1週間のツイート数 "),
-                _c("span", [_vm._v(" 更新日時：" + _vm._s(_vm.week))])
+                _c("span", [_vm._v(" 更新：" + _vm._s(_vm.week))])
               ]),
               _vm._v(" "),
               _c(

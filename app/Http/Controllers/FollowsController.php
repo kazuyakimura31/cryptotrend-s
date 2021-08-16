@@ -77,6 +77,8 @@ class FollowsController extends Controller
           array_push($follow_users,$random_user->screen_name);
         }
 
+        // dd($random_user->screen_name);
+
         $follow_users = implode(",", $follow_users);//クォーテーション付与。
         $twitteroauth = $this->twitteroauth();
         

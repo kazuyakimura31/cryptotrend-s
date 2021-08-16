@@ -377,7 +377,7 @@
       display: flex;
       justify-content: space-between;
       @include mq() {
-        width: 95%;
+        // width: 95%;
         display: flex;
         justify-content: space-between;
       }
@@ -551,7 +551,7 @@
         }
       }
       span{
-        font-size: 10px;
+        font-size: 9px;
       }
     }
     &__table{

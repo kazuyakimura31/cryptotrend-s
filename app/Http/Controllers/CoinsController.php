@@ -53,7 +53,7 @@ class CoinsController extends Controller
             "ETC" OR "イーサリアムクラシック" OR "LSK" OR "リスク" OR "FCT" OR "ファクトム" OR "XRP" OR "リップル" OR
             "XEM" OR "ネム" OR "LTC" OR "ライトコイン" OR "BCH" OR "ビットコインキャッシュ" OR "MONA" OR "モナコイン" OR
             "XLM" OR "ステラルーメン" OR "QTUM" OR "クアンタム" OR "BAT" OR "ベーシックアテンショントークン" OR
-            "IOST" OR "アイオーエスティー" OR "ENJ" OR "エンジンコイン" OR "OMG" OR "オーエムジー"';
+            "IOST" OR "アイオーエスティー" OR "ENJ" OR "エンジンコイン" OR "OMG" OR "オーエムジー" OR "PLT" OR "パレットトークン"';
 
         $options = array(
             'q'=> $search_key,
@@ -84,7 +84,7 @@ class CoinsController extends Controller
             }
         }
         
-        $btc = $eth = $etc = $lsk = $fct = $xrp = $xem = $ltc = $bch = $mona = $xlm = $qtum = $bat = $iost = $enj = $omg = 0;
+        $btc = $eth = $etc = $lsk = $fct = $xrp = $xem = $ltc = $bch = $mona = $xlm = $qtum = $bat = $iost = $enj = $omg = $plt = 0;
         $tweet_count = count($tweet_results);//ツイート数
 
         for($i = 0; $i < $tweet_count; $i++){
@@ -135,6 +135,9 @@ class CoinsController extends Controller
             }
             if(stristr($tweet_results[$i]['text'],"オーエムジー") !== false || stristr($tweet_results[$i]['text'],"omg") !== false){
                 $omg++;
+            }
+            if(stristr($tweet_results[$i]['text'],"パレットトークン") !== false || stristr($tweet_results[$i]['text'],"plt") !== false){
+                $plt++;
             }
         }
 
@@ -202,6 +205,10 @@ class CoinsController extends Controller
         $coin_omg->hour = $omg;
         $coin_omg->save();
 
+        $coin_plt = Coin::where('id', 17)->first();
+        $coin_plt->hour = $plt;
+        $coin_plt->save();
+
         // dd($coin_btc);
 
         $now_time = date("Y-m-d H:i:s");
@@ -235,7 +242,7 @@ class CoinsController extends Controller
             "ETC" OR "イーサリアムクラシック" OR "LSK" OR "リスク" OR "FCT" OR "ファクトム" OR "XRP" OR "リップル" OR
             "XEM" OR "ネム" OR "LTC" OR "ライトコイン" OR "BCH" OR "ビットコインキャッシュ" OR "MONA" OR "モナコイン" OR
             "XLM" OR "ステラルーメン" OR "QTUM" OR "クアンタム" OR "BAT" OR "ベーシックアテンショントークン" OR
-            "IOST" OR "アイオーエスティー" OR "ENJ" OR "エンジンコイン" OR "OMG" OR "オーエムジー"';
+            "IOST" OR "アイオーエスティー" OR "ENJ" OR "エンジンコイン" OR "OMG" OR "オーエムジー" OR "PLT" OR "パレットトークン"';
 
         $options = array(
             'q'=> $search_key,
@@ -266,7 +273,7 @@ class CoinsController extends Controller
             }
         }
         
-        $btc = $eth = $etc = $lsk = $fct = $xrp = $xem = $ltc = $bch = $mona = $xlm = $qtum = $bat = $iost = $enj = $omg = 0;
+        $btc = $eth = $etc = $lsk = $fct = $xrp = $xem = $ltc = $bch = $mona = $xlm = $qtum = $bat = $iost = $enj = $omg = $plt = 0;
         $tweet_count = count($tweet_results);//ツイート数
 
         for($i = 0; $i < $tweet_count; $i++){
@@ -317,6 +324,9 @@ class CoinsController extends Controller
             }
             if(stristr($tweet_results[$i]['text'],"オーエムジー") !== false || stristr($tweet_results[$i]['text'],"omg") !== false){
                 $omg++;
+            }
+            if(stristr($tweet_results[$i]['text'],"パレットトークン") !== false || stristr($tweet_results[$i]['text'],"plt") !== false){
+                $plt++;
             }
         }
 
@@ -384,6 +394,10 @@ class CoinsController extends Controller
         $coin_omg->day = $omg;
         $coin_omg->save();
 
+        $coin_plt = Coin::where('id', 17)->first();
+        $coin_plt->day = $plt;
+        $coin_plt->save();
+
         // dd($coin_btc);
 
         $now_time = date("Y-m-d H:i:s");
@@ -417,7 +431,7 @@ class CoinsController extends Controller
             "ETC" OR "イーサリアムクラシック" OR "LSK" OR "リスク" OR "FCT" OR "ファクトム" OR "XRP" OR "リップル" OR
             "XEM" OR "ネム" OR "LTC" OR "ライトコイン" OR "BCH" OR "ビットコインキャッシュ" OR "MONA" OR "モナコイン" OR
             "XLM" OR "ステラルーメン" OR "QTUM" OR "クアンタム" OR "BAT" OR "ベーシックアテンショントークン" OR
-            "IOST" OR "アイオーエスティー" OR "ENJ" OR "エンジンコイン" OR "OMG" OR "オーエムジー"';
+            "IOST" OR "アイオーエスティー" OR "ENJ" OR "エンジンコイン" OR "OMG" OR "オーエムジー" OR "PLT" OR "パレットトークン"';
 
         $options = array(
             'q'=> $search_key,
@@ -448,7 +462,7 @@ class CoinsController extends Controller
             }
         }
         
-        $btc = $eth = $etc = $lsk = $fct = $xrp = $xem = $ltc = $bch = $mona = $xlm = $qtum = $bat = $iost = $enj = $omg = 0;
+        $btc = $eth = $etc = $lsk = $fct = $xrp = $xem = $ltc = $bch = $mona = $xlm = $qtum = $bat = $iost = $enj = $omg = $plt = 0;
         $tweet_count = count($tweet_results);//ツイート数
 
         for($i = 0; $i < $tweet_count; $i++){
@@ -499,6 +513,9 @@ class CoinsController extends Controller
             }
             if(stristr($tweet_results[$i]['text'],"オーエムジー") !== false || stristr($tweet_results[$i]['text'],"omg") !== false){
                 $omg++;
+            }
+            if(stristr($tweet_results[$i]['text'],"パレットトークン") !== false || stristr($tweet_results[$i]['text'],"plt") !== false){
+                $plt++;
             }
         }
 
@@ -565,6 +582,10 @@ class CoinsController extends Controller
         $coin_omg = Coin::where('id', 16)->first();
         $coin_omg->week = $omg;
         $coin_omg->save();
+
+        $coin_plt = Coin::where('id', 17)->first();
+        $coin_plt->week = $plt;
+        $coin_plt->save();
 
         // dd($coin_btc);
 
